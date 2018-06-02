@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Parameter Variation</TITLE>
+<META NAME="description" CONTENT="Parameter Variation">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html514" HREF="node33.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html512" HREF="node30.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html506" HREF="node31.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html516" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html515" HREF="node33.html">Appearance-only Pose Estimates</A>
+<B>Up:</B> <A NAME="tex2html513" HREF="node30.html">Experimental Results</A>
+<B> Previous:</B> <A NAME="tex2html507" HREF="node31.html">A Simple Scene</A>
+<BR> <P>
+<H1><A NAME="SECTION001120000000000000000">Parameter Variation</A></H1>
+<P>
+In Chapter&nbsp;<A HREF="node25.html#localize">5</A>, we briefly noted that in practice, one
+might wish to control the relative weights of the separate components
+of the feature vector <IMG WIDTH=8 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4502" SRC="img52.gif"> (Equation&nbsp;<A HREF="node26.html#featurevector">5.2</A>).
+Weighting the camera pose, and/or image-position can adjust the
+extents to which we favour <em>a priori</em> estimates over current
+sensor observations, or the extent to which we favour image
+<em>geometry</em> over <em>appearance</em>.  One can imagine a variety of
+situations where one choice might be more practical than another.
+Formally, let us redefine the feature vector <I>f</I> of a candidate
+landmark to be
+<BR><IMG WIDTH=500 HEIGHT=34 ALIGN=BOTTOM ALT="equation904" SRC="img99.gif"><BR>
+where, as in equation&nbsp;<A HREF="node26.html#featurevector">5.2</A>, <IMG WIDTH=11 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4506" SRC="img53.gif"> is the
+principal components encoding of the intensity distribution of the
+candidate relative to the set of tracked landmark templates,
+<IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> is the camera pose of the candidate, <IMG WIDTH=11 HEIGHT=19 ALIGN=MIDDLE ALT="tex2html_wrap_inline4508" SRC="img54.gif"> is
+the image position of the candidate and the notation
+<IMG WIDTH=34 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline4512" SRC="img56.gif"> represents the concatenation of the
+vectors <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4514" SRC="img57.gif"> and <IMG WIDTH=11 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4516" SRC="img58.gif">. The scaling parameters,
+<IMG WIDTH=11 HEIGHT=8 ALIGN=BOTTOM ALT="tex2html_wrap_inline4820" SRC="img100.gif"> and <IMG WIDTH=10 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4822" SRC="img101.gif">, represent degree to which the camera pose and
+image-position are weighted in the feature vector.
+<P>
+Figure&nbsp;<A HREF="node32.html#paramvar">6.4</A> depicts the effects of varying <IMG WIDTH=10 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4822" SRC="img101.gif"> and
+<IMG WIDTH=11 HEIGHT=8 ALIGN=BOTTOM ALT="tex2html_wrap_inline4820" SRC="img100.gif"> for the training set of Scene I.  Each point on the surface
+represents a measure of the goodness of results in terms of the mean
+magnitude in estimation error over the twenty test cases, plotted as a
+function of the scale parameters <IMG WIDTH=11 HEIGHT=8 ALIGN=BOTTOM ALT="tex2html_wrap_inline4820" SRC="img100.gif"> and <IMG WIDTH=10 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4822" SRC="img101.gif">. The scale
+parameters are varied by powers of ten.  The results clearly indicate
+a large portion of parameter space for which the accuracy is very
+good.  The degradation of results below <IMG WIDTH=79 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap_inline4832" SRC="img102.gif"> in the
+corners of the plot can be attributed to limits in machine precision.
+The sharp rise above <IMG WIDTH=72 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap_inline4834" SRC="img103.gif"> corresponds to the increased
+significance of the <em>a priori</em> estimate (the rise forms a plateau
+at about 4cm).  The sharp change in accuracy at this point indicates
+that controlling the contribution of the <em>a priori</em> estimate by
+controlling <IMG WIDTH=11 HEIGHT=8 ALIGN=BOTTOM ALT="tex2html_wrap_inline4820" SRC="img100.gif"> could pose difficulties.  The gentle slope in the
+foreground represents the transition between primarily
+appearance-based estimation to primarily geometry-based estimation, as
+<IMG WIDTH=10 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4822" SRC="img101.gif"> varies from about <IMG WIDTH=70 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline4840" SRC="img104.gif"> to <IMG WIDTH=70 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline4842" SRC="img105.gif">.  In the
+case of this scene, it is apparent that geometry-based estimation
+performs slightly better than appearance-based estimation.
+<P>
+<P><A NAME="1086">&#160;</A><A NAME="paramvar">&#160;</A><IMG WIDTH=581 HEIGHT=436 ALIGN=BOTTOM ALT="figure928" SRC="img108.gif"><BR>
+<STRONG>Figure 6.4:</STRONG> Parameter variation
+results for Scene I.
+  The surface plotted is the mean error over twenty test cases for the
+  corresponding values of <IMG WIDTH=62 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline4844" SRC="img106.gif"> (the axis labelled as Camera)
+  and <IMG WIDTH=60 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline4846" SRC="img107.gif"> (the axis labelled as Image Position). The sharp
+  rise on the right side of the plot forms a constant plateau at about
+  4.0cm. Note the gentle slope in the foreground, which marks the
+  transition between appearance-based and geometry-based pose
+  estimation.<BR>
+<P><BR> <HR>
+<UL><A NAME="CHILD_LINKS">&#160;</A>
+<LI> <A NAME="tex2html517" HREF="node33.html#SECTION001121000000000000000">Appearance-only Pose Estimates</A>
+<LI> <A NAME="tex2html518" HREF="node34.html#SECTION001122000000000000000">Using the Edge Distribution</A>
+</UL>
+<HR><A NAME="tex2html514" HREF="node33.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html512" HREF="node30.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html506" HREF="node31.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html516" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html515" HREF="node33.html">Appearance-only Pose Estimates</A>
+<B>Up:</B> <A NAME="tex2html513" HREF="node30.html">Experimental Results</A>
+<B> Previous:</B> <A NAME="tex2html507" HREF="node31.html">A Simple Scene</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Mobile Robot Localisation Using Learned Landmarks</TITLE>
+<META NAME="description" CONTENT="Mobile Robot Localisation Using Learned Landmarks">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html50" HREF="node1.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif_gr.gif"> <IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"> <A NAME="tex2html52" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html51" HREF="node1.html">ABSTRACT</A>
+<BR> <P>
+ July 21, 1998
+         1
+<P>
+ Centre for Intelligent Machines<BR> 
+               McGill University<BR> 
+               3480 University St.<BR> 
+               Montr&#233;al (Qu&#233;bec) H3A 2A7, Canada<BR> 
+               <I>Tel.</I> : (514) 933-5795
+<P>
+simra@@cim.mcgill.ca
+the Faculty of Graduate Studies and Research  
+Department of Computer Science 
+Faculty of Graduate Studies and Research                    
+Master of Science   Computer Science
+<P>
+Robert Sim                          
+MCMXCVIII
+<P>
+<H1 ALIGN=CENTER>Mobile Robot Localisation Using Learned Landmarks</H1>
+<P ALIGN=CENTER><STRONG>Robert Sim</STRONG></P><P>
+<P ALIGN=CENTER><STRONG>July 1998</STRONG></P><P>
+<P>
+<BR> <HR>
+<UL><A NAME="CHILD_LINKS">&#160;</A>
+<LI> <A NAME="tex2html53" HREF="node4.html#SECTION00400000000000000000">Contents</A>
+<LI> <A NAME="tex2html54" HREF="node5.html#SECTION00500000000000000000">List of Figures</A>
+<LI> <A NAME="tex2html55" HREF="node6.html#SECTION00600000000000000000">Introduction</A>
+<UL>
+<LI> <A NAME="tex2html56" HREF="node7.html#SECTION00610000000000000000">Problem Statement</A>
+<LI> <A NAME="tex2html57" HREF="node8.html#SECTION00620000000000000000">Approach</A>
+<LI> <A NAME="tex2html58" HREF="node9.html#SECTION00630000000000000000">Applications</A>
+<LI> <A NAME="tex2html59" HREF="node10.html#SECTION00640000000000000000">Outline</A>
+</UL> 
+<LI> <A NAME="tex2html60" HREF="node11.html#SECTION00700000000000000000">Previous Work</A>
+<UL>
+<LI> <A NAME="tex2html61" HREF="node12.html#SECTION00710000000000000000">Triangulation Methods</A>
+<LI> <A NAME="tex2html62" HREF="node13.html#SECTION00720000000000000000">Kalman Filtering</A>
+<LI> <A NAME="tex2html63" HREF="node14.html#SECTION00730000000000000000">Feature-Based Methods</A>
+<LI> <A NAME="tex2html64" HREF="node15.html#SECTION00740000000000000000">Sensor Inversion</A>
+<LI> <A NAME="tex2html65" HREF="node16.html#SECTION00750000000000000000">Visual Attention</A>
+</UL> 
+<LI> <A NAME="tex2html66" HREF="node17.html#SECTION00800000000000000000">Learning Landmarks</A>
+<UL>
+<LI> <A NAME="tex2html67" HREF="node18.html#SECTION00810000000000000000">Edge Detection</A>
+<LI> <A NAME="tex2html68" HREF="node19.html#SECTION00820000000000000000">Feature Interpretation</A>
+<LI> <A NAME="tex2html69" HREF="node20.html#SECTION00830000000000000000">Landmark Detection</A>
+</UL> 
+<LI> <A NAME="tex2html70" HREF="node21.html#SECTION00900000000000000000">Visual Tracking</A>
+<UL>
+<LI> <A NAME="tex2html71" HREF="node22.html#SECTION00910000000000000000">Landmark Recognition</A>
+<LI> <A NAME="tex2html72" HREF="node23.html#SECTION00920000000000000000">Landmark Tracking</A>
+<LI> <A NAME="tex2html73" HREF="node24.html#SECTION00930000000000000000">Example: A Small Database</A>
+</UL> 
+<LI> <A NAME="tex2html74" HREF="node25.html#SECTION001000000000000000000">Position Estimation</A>
+<UL>
+<LI> <A NAME="tex2html75" HREF="node26.html#SECTION001010000000000000000">Estimation by Linear Combination</A>
+<LI> <A NAME="tex2html76" HREF="node27.html#SECTION001020000000000000000">Robust Estimate Combination</A>
+<UL>
+<LI> <A NAME="tex2html77" HREF="node28.html#SECTION001021000000000000000">Estimating Error</A>
+<LI> <A NAME="tex2html78" HREF="node29.html#SECTION001022000000000000000">Removing Outliers</A>
+</UL> 
+</UL> 
+<LI> <A NAME="tex2html79" HREF="node30.html#SECTION001100000000000000000">Experimental Results</A>
+<UL>
+<LI> <A NAME="tex2html80" HREF="node31.html#SECTION001110000000000000000">A Simple Scene</A>
+<LI> <A NAME="tex2html81" HREF="node32.html#SECTION001120000000000000000">Parameter Variation</A>
+<UL>
+<LI> <A NAME="tex2html82" HREF="node33.html#SECTION001121000000000000000">Appearance-only Pose Estimates</A>
+<LI> <A NAME="tex2html83" HREF="node34.html#SECTION001122000000000000000">Using the Edge Distribution</A>
+</UL> 
+<LI> <A NAME="tex2html84" HREF="node35.html#SECTION001130000000000000000">A Larger Scene</A>
+<LI> <A NAME="tex2html85" HREF="node36.html#SECTION001140000000000000000">Two Indoor Scenes</A>
+<UL>
+<LI> <A NAME="tex2html86" HREF="node37.html#SECTION001141000000000000000">A Laboratory Environment</A>
+<LI> <A NAME="tex2html87" HREF="node38.html#SECTION001142000000000000000">Laboratory Environment Revisited</A>
+</UL> 
+<LI> <A NAME="tex2html88" HREF="node39.html#SECTION001150000000000000000">Recovering Orientation</A>
+</UL> 
+<LI> <A NAME="tex2html89" HREF="node40.html#SECTION001200000000000000000">Discussion and Conclusions</A>
+<UL>
+<LI> <A NAME="tex2html90" HREF="node41.html#SECTION001210000000000000000">Overview</A>
+<LI> <A NAME="tex2html91" HREF="node42.html#SECTION001220000000000000000">Landmarks</A>
+<LI> <A NAME="tex2html92" HREF="node43.html#SECTION001230000000000000000">Pose Estimation</A>
+<LI> <A NAME="tex2html93" HREF="node44.html#SECTION001240000000000000000">Experimental Results</A>
+<LI> <A NAME="tex2html94" HREF="node45.html#SECTION001250000000000000000">Future Work</A>
+<UL>
+<LI> <A NAME="tex2html95" HREF="node46.html#SECTION001251000000000000000">Visual Attention</A>
+<LI> <A NAME="tex2html96" HREF="node47.html#SECTION001252000000000000000">Visual Tracking</A>
+<LI> <A NAME="tex2html97" HREF="node48.html#SECTION001253000000000000000">Parameterisation Properties</A>
+</UL> 
+<LI> <A NAME="tex2html98" HREF="node49.html#SECTION001260000000000000000">Conclusion</A>
+</UL> 
+<LI> <A NAME="tex2html99" HREF="node50.html#SECTION001300000000000000000">References</A>
+<LI> <A NAME="tex2html100" HREF="node51.html#SECTION001400000000000000000">  About this document ... </A>
+</UL>
+<BR> <HR>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

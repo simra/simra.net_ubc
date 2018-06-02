@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Configuring Remote Printing @cs.ubc.ca</title>
+<!--    <link rel="stylesheet" href="http://www.cim.mcgill.ca/~simra/style.css"
+type="text/css"> -->
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <link rel="icon" href="http://www.cs.ubc.ca/~simra/local/images/s.png" type="image/png" >
+    <meta name="author" content="Robert Sim">
+  </HEAD>
+<BODY>
+<H1>Configuring Remote Printing @cs.ubc.ca</h1>
+
+<h2>Intro</h2>
+
+Wouldn't it be nice if you could print your documents to cc108 directly from
+linux running on your laptop?  Here's how..
+
+<h2>Overview</h2>
+
+The basic idea is to forward the lpd port running on
+<tt>hobgoblin.cs.ubc.ca</tt> to your local box and fool the local print system
+into using it as a local lpd server.  I've got CUPS installed on my laptop, so
+this document explains how to configure cups.  If you've just got lpd/lpr I
+would imagine that this whole process is infinitely simpler..
+
+
+<h2>Port forwarding</h2>
+
+I'll assume your laptop is connected via ubc wireless.  Like smtp and imap, the
+print server is firewalled, so you need to do some port forwarding magic to
+make things work. 
+<p>
+<b>Correction:</b> Hobgoblin *isn't* firewalled, at least from
+wireless.ubc.ca.  All the same, I would recommend doing the port forwarding so
+that your print job can't be sniffed in transit.
+
+<p>
+First, make sure lpd is not running on your machine:
+<pre>
+service lpd stop
+chkconfig lpd off
+</pre>
+Now, establish a connection to <tt>hobgoblin</tt>, the server running cc108.  (Other
+printers are on <tt>printhost</tt>.  If you want to set up connections to
+both hosts you'll need to use a different port..)
+<pre>
+ssh -N -L 515:hobgoblin.cs.ubc.ca:515 username@cascade.cs.ubc.ca &
+</pre>
+
+Note that you'll need to be root on your laptop to forward to port 515.
+Otherwise, use something like <tt>5515:hobgoblin.cs.ubc.ca:515</tt>.  Also note that
+you'll need to substitute your username, and also have ssh configured to
+authenticate using public key authentication (see <tt>man ssh</tt> or
+<tt>man ssh-keygen</tt>).  I've put this line at the end of
+<tt>/etc/rc.d/rc.local</tt>
+<p>
+<b>A word about security:</b>  Never forward ports over a firewall without
+first firewalling your laptop.  Make sure you use iptables or ipchains to
+prevent third parties from exploiting your machine as an open relay.
+
+<h2>Cups configuration</h2>
+
+    Make sure you have cups installed (<a
+    href="http://www.cups.org">http://www.cups.org</a>).  
+<pre>
+service cups start
+chkconfig cups on
+</pre>
+
+Now we configure cc108.  If you want to configure a different printer, you can get
+its information from <tt>/cs/local/generic/lib/LPRng/printcap</tt>.  Note
+that most other printers are on <tt>printhost</tt>.  I'll leave <tt>cc108-onesided</tt> to future
+work.. :-)
+<p>
+Using your browser, point to <a
+href="http://localhost:631/admin">http://localhost:631/admin</a> (bet you
+didn't know you were running a mini-webserver.)  
+<table>
+<tr><td>
+<a href="cups1.png"><img src="cups1-sm.png" align=left style="margin:10px" border=0></a>
+Select "Add printer" from the menu.
+</td></tr>
+<tr><td>
+<a href="cups2.png"><img src="cups2-sm.png" align=left style="margin:10px" border=0></a>
+Give the printer a name.  For convenience I recommend giving it the same name
+as it has in the printcap.  The Location and Description boxes are only for
+convenience-- write whatever you want there.
+</td></tr>
+<tr><td>
+<a href="cups3.png"><img src="cups3-sm.png" align=left style="margin:10px" border=0></a>
+Select LPD/LPR Host or Printer for the device.
+</td></tr>
+<tr><td>
+<a href="cups4.png"><img src="cups4-sm.png" align=left style="margin:10px" border=0></a>
+Enter <pre>'lpd://localhost/cc108'</pre> for the device URI.  Substitute the
+actual print queue name you want to use if you're not configuring cc108.  If
+you're not port forwarding, use the actual print host,
+<tt>hobgoblin.cs.ubc.ca</tt> or <tt>printhost.cs.ubc.ca</tt> as the case may be.
+</td></tr>
+<tr><td>
+<a href="cups5.png"><img src="cups5-sm.png" align=left style="margin:10px" border=0></a>
+Select HP for the Model.
+</td></tr>
+<tr><td>
+<a href="cups6.png"><img src="cups6-sm.png" align=left style="margin:10px" border=0></a>
+Select HP Laserjet 4Si/4SiMX PS (xx) for the printer driver, assuming cc108.
+Use the printcap for other queues.  Someone correct
+me if this is incorrect.
+</td></tr>
+<tr><td>
+<a href="cups7.png"><img src="cups7-sm.png" align=left style="margin:10px" border=0></a>
+You're done!
+</td></tr>
+</table>
+
+<h2>Testing</h2>
+
+Now try printing with <tt>'lpr -Pcc108'</tt>, or look at the queue with <tt>'lpq -Pcc108'</tt>.
+You can <tt>'setenv PRINTER cc108'</tt> or <tt>'export PRINTER=cc108'</tt> to make that the
+default printer.  If you have problems, please mail me and we can update this
+document.  Happy printing!
+
+
+
+    <hr>
+    <address>
+      <a href="mailto:web@simra.net">Robert Sim</a>,
+      Last modified:   19 Feb 2004
+    </address>
+
+  </body>
+</html>

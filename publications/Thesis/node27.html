@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Robust Estimate Combination</TITLE>
+<META NAME="description" CONTENT="Robust Estimate Combination">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html450" HREF="node28.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html448" HREF="node25.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html444" HREF="node26.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html452" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html451" HREF="node28.html">Estimating Error</A>
+<B>Up:</B> <A NAME="tex2html449" HREF="node25.html">Position Estimation</A>
+<B> Previous:</B> <A NAME="tex2html445" HREF="node26.html">Estimation by Linear Combination</A>
+<BR> <P>
+<H1><A NAME="SECTION001020000000000000000">Robust Estimate Combination</A></H1>
+<P>
+In the previous section we demonstrated how a tracked landmark can be
+used to obtain a position estimate given a recent observation of the
+landmark.  Typically one might expect to detect several landmarks in a
+single image, and hence it is desirable to combine the individual
+estimates obtained from each landmark in a way that achieves a more
+robust position estimate.  This section will explore the problem of
+robust position estimation from a set of estimates.
+<P>
+As we noted briefly in Chapter&nbsp;<A HREF="node11.html#related">2</A>, Self, Smith and Cheeseman
+have demonstrated the utility of the Kalman Filter in combining
+position estimates&nbsp;[<A HREF="node50.html#smith1987">52</A>, <A HREF="node50.html#smith1986">53</A>]. In that work, position estimates are
+represented as <em>Approximate Transforms</em> (ATs) between related
+coordinate frames, and described numerically by an estimated mean
+<IMG WIDTH=16 HEIGHT=18 ALIGN=BOTTOM ALT="tex2html_wrap_inline4654" SRC="img75.gif">, and an associated covariance matrix, <IMG WIDTH=13 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4656" SRC="img76.gif">,
+<BR><IMG WIDTH=500 HEIGHT=23 ALIGN=BOTTOM ALT="equation696" SRC="img77.gif"><BR>
+<P>
+<P><A NAME="702">&#160;</A><A NAME="merge">&#160;</A><IMG WIDTH=186 HEIGHT=135 ALIGN=BOTTOM ALT="figure700" SRC="img81.gif"><BR>
+<STRONG>Figure 5.5:</STRONG> Merged ATs. AT <IMG WIDTH=20 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4658" SRC="img78.gif"> is the merged combination
+of AT <IMG WIDTH=20 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4660" SRC="img79.gif"> and AT <IMG WIDTH=20 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4662" SRC="img80.gif">.<BR>
+<P>
+<P>
+Of the operations that are defined on ATs, the merging operation is
+of principal interest to us.  Merging takes two ATs and produces a
+new AT whose mean, <IMG WIDTH=16 HEIGHT=18 ALIGN=BOTTOM ALT="tex2html_wrap_inline4654" SRC="img75.gif">, is a weighted linear
+combination of the input means, and whose covariance <IMG WIDTH=13 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4656" SRC="img76.gif">
+expresses an improved confidence in the new estimate.  The merging
+operation is expressed algebraically as
+<BR><IMG WIDTH=500 HEIGHT=20 ALIGN=BOTTOM ALT="equation707" SRC="img82.gif"><BR>
+where each <IMG WIDTH=113 HEIGHT=37 ALIGN=MIDDLE ALT="tex2html_wrap_inline4668" SRC="img83.gif"> is an approximate
+transform.  The operation can be depicted graphically, as shown in
+Figure&nbsp;<A HREF="node27.html#merge">5.5</A>, wherein each vector represents a mean estimate,
+with an associated covariance represented as an ellipse.  The merging 
+operation is accomplished by first computing the Kalman
+gain factor, <IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4670" SRC="img84.gif">, defined by
+<P>
+<BR><IMG WIDTH=500 HEIGHT=22 ALIGN=BOTTOM ALT="equation715" SRC="img85.gif"><BR>
+which is then used to compute the required merged covariance matrix
+<BR><A NAME="asym">&#160;</A><IMG WIDTH=500 HEIGHT=20 ALIGN=BOTTOM ALT="equation722" SRC="img86.gif"><BR>
+and the merged mean estimate
+<BR><A NAME="mean">&#160;</A><IMG WIDTH=500 HEIGHT=23 ALIGN=BOTTOM ALT="equation729" SRC="img87.gif"><BR>
+<P>
+The effectiveness of the merging operation is dependent on two important
+assumptions.  First, the errors in the ATs are assumed to be
+independent, with zero mean and expressed in the same coordinate system.
+Second, the error distributions of the ATs are assumed to be
+normal, which preserves linearity under the merging operation.
+<P>
+<BR> <HR>
+<UL><A NAME="CHILD_LINKS">&#160;</A>
+<LI> <A NAME="tex2html453" HREF="node28.html#SECTION001021000000000000000">Estimating Error</A>
+<LI> <A NAME="tex2html454" HREF="node29.html#SECTION001022000000000000000">Removing Outliers</A>
+</UL>
+<HR><A NAME="tex2html450" HREF="node28.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html448" HREF="node25.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html444" HREF="node26.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html452" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html451" HREF="node28.html">Estimating Error</A>
+<B>Up:</B> <A NAME="tex2html449" HREF="node25.html">Position Estimation</A>
+<B> Previous:</B> <A NAME="tex2html445" HREF="node26.html">Estimation by Linear Combination</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Removing Outliers</TITLE>
+<META NAME="description" CONTENT="Removing Outliers">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html472" HREF="node30.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html470" HREF="node27.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html466" HREF="node28.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html474" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html473" HREF="node30.html">Experimental Results</A>
+<B>Up:</B> <A NAME="tex2html471" HREF="node27.html">Robust Estimate Combination</A>
+<B> Previous:</B> <A NAME="tex2html467" HREF="node28.html">Estimating Error</A>
+<BR> <P>
+<H2><A NAME="SECTION001022000000000000000">Removing Outliers</A></H2>
+<P>
+While it is now possible to obtain a quantitative measure of the
+uncertainty of a position estimate, based on the accuracy of its
+underlying tracked landmark, it is still possible that an estimate may
+have a relatively small error estimate and yet land far off the mark
+from the true position. For instance, this will occur if a candidate
+landmark is incorrectly matched to a tracked landmark whose error
+model is small. Therefore, in order to compute a <em>robust mean</em>,
+it becomes important to detect and eliminate outliers before
+performing the merging operations defined in equations&nbsp;<A HREF="node27.html#asym">5.10</A>
+and&nbsp;<A HREF="node27.html#mean">5.11</A>.
+<P>
+Outlier detection is performed by finding the median position estimate
+<IMG WIDTH=28 HEIGHT=37 ALIGN=MIDDLE ALT="tex2html_wrap_inline4748" SRC="img92.gif">, and computing a median covariance, <IMG WIDTH=27 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4750" SRC="img93.gif"> from
+the set of predictions and their associated covariances (recall that
+the set of predictions is defined by the predictions computed for each
+candidate landmark observed in the image).  <IMG WIDTH=27 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4750" SRC="img93.gif"> defines an
+ellipsoidal region of configuration space, centred at <IMG WIDTH=28 HEIGHT=37 ALIGN=MIDDLE ALT="tex2html_wrap_inline4748" SRC="img92.gif">,
+within which predictions can be considered to be
+acceptable<A NAME="tex2html28" HREF="footnode.html#778"><IMG  ALIGN=BOTTOM ALT="gif" SRC="icons/foot_motif.gif"></A>.
+<P>
+<P><A NAME="781">&#160;</A><A NAME="combined">&#160;</A><IMG WIDTH=209 HEIGHT=154 ALIGN=BOTTOM ALT="figure779" SRC="img94.gif"><BR>
+<STRONG>Figure 5.6:</STRONG> A set of filtered
+    predictions.  The ellipse corresponds to the covariance of the
+    median AT.  Solid diamonds represent retained predictions whereas
+    hollow diamonds represent rejected predictions. The `+'s represent
+    a portion of the locations at which training images were obtained.
+    <BR>
+<P>
+<P>
+The individual predictions are filtered based on the region defined by
+the median AT.  Predictions falling outside the region are discarded,
+a new median AT is computed, and the filtering is repeated. This
+process continues until all of the predictions remaining in the set
+fall within the acceptable region.  Figure&nbsp;<A HREF="node29.html#combined">5.6</A> depicts a
+set of position estimates (the set of all diamonds), the median
+estimate (the ellipse) and those estimates which are considered
+acceptable for merging, (the solid diamonds). The `+'s represent
+locations at which training images were obtained.
+<P>
+Once outliers have been filtered, the final step in obtaining a
+position estimate is to merge the individual estimates using the
+merging operation for ATs, as defined by equations&nbsp;<A HREF="node27.html#asym">5.10</A>
+and&nbsp;<A HREF="node27.html#mean">5.11</A>. The confidence in the final result is expressed by the
+final error estimate.  The next chapter will present the results of
+several experiments which demonstrate the robustness of the entire
+method.
+<P>
+<HR><A NAME="tex2html472" HREF="node30.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html470" HREF="node27.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html466" HREF="node28.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html474" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html473" HREF="node30.html">Experimental Results</A>
+<B>Up:</B> <A NAME="tex2html471" HREF="node27.html">Robust Estimate Combination</A>
+<B> Previous:</B> <A NAME="tex2html467" HREF="node28.html">Estimating Error</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

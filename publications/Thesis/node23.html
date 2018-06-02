@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Landmark Tracking</TITLE>
+<META NAME="description" CONTENT="Landmark Tracking">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html406" HREF="node24.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html404" HREF="node21.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html398" HREF="node22.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html408" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html407" HREF="node24.html">Example: A Small Database</A>
+<B>Up:</B> <A NAME="tex2html405" HREF="node21.html">Visual Tracking</A>
+<B> Previous:</B> <A NAME="tex2html399" HREF="node22.html">Landmark Recognition</A>
+<BR> <P>
+<H1><A NAME="SECTION00920000000000000000">Landmark Tracking</A></H1>
+<P>
+In order to describe the environment, images must be obtained from
+representative viewpoints.  For the purposes of this discussion, let
+us assume that we select viewpoints that cover the configuration space
+in a uniform grid.  This is by no means a requirement or constraint,
+but rather a simplifying assumption.  In order to achieve
+computational efficiency, viewpoints are selected such that the camera
+is facing in a consistent orientation<A NAME="tex2html15" HREF="footnode.html#416"><IMG  ALIGN=BOTTOM ALT="gif" SRC="icons/foot_motif.gif"></A>.  Once the sample images have been acquired,
+they are used to automatically learn a suitable set of tracked
+landmarks for subsequent positioning.
+<P>
+The set of tracked landmarks is initially defined by the set of single
+candidate landmarks observed in a selected <em>bootstrap</em> image from
+the database.  These candidate landmarks, which become prototypes for
+matching, are selected in this manner in order to guarantee uniqueness
+- no two landmark candidates will overlap within the same
+image<A NAME="tex2html16" HREF="footnode.html#418"><IMG  ALIGN=BOTTOM ALT="gif" SRC="icons/foot_motif.gif"></A>.  Matching is based on a minimisation of the
+Euclidean distance between the principal components encodings of the
+prototype and of the observed candidate landmarks in each image.
+Typically, we select the initial bootstrap image to be the one that is
+taken from a camera position closest to the centroid of all visited
+camera positions.  Given this initial set of prototypes, the candidate
+landmarks in each of the remaining images are considered for inclusion
+in one of the tracked landmarks.  Consideration for inclusion in a set
+is based on the following methodology:
+<BR><A NAME="search">&#160;</A><A NAME="trackalg">&#160;</A><IMG WIDTH=666 HEIGHT=330 ALIGN=BOTTOM ALT="algorithm419" SRC="img40.gif"><BR>
+<P>
+The goal of this method is to grow landmark sets as much as possible
+in configuration space so that a candidate landmark can be matched to
+the correct target over a large portion of the space.  The local
+search in the neighbourhood of <IMG WIDTH=9 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4444" SRC="img41.gif"> is performed in order to counter
+the effects of any instabilities in the underlying landmark detector.
+Figure&nbsp;<A HREF="node23.html#lmset">4.3</A> shows a typical landmark set.  Each thumbnail image
+corresponds to the landmark as detected in the image taken at the
+corresponding grid position in configuration space. Grid positions
+with no corresponding thumbnail image indicate positions in the
+configuration space where no landmark candidate was found that matched
+the prototype.  This can occur under three separate conditions: first,
+no suitable landmark candidate was detected by the landmark detector;
+second, a landmark candidate was detected but found a better match to
+a different prototype in the local neighbourhood; or third, a landmark
+candidate was detected but differed too greatly in appearance from the
+prototype - that is, the distance in the subspace was greater than the
+user-defined threshold.
+<P>
+<P><A NAME="433">&#160;</A><A NAME="lmset">&#160;</A><IMG WIDTH=354 HEIGHT=351 ALIGN=BOTTOM ALT="figure431" SRC="img42.gif"><BR>
+<STRONG>Figure 4.3:</STRONG> A typical landmark set. Each
+  thumbnail corresponds to the landmark as detected in the image taken
+  at the corresponding grid position in camera space.<BR>
+<P>
+<P>
+A <em>tracked landmark</em> is the essential modelling primitive that
+defines the ``map'' and which is used for subsequent correspondence
+and position estimation.  It should be noted that the tracking method
+makes no assumptions regarding position within the image, which
+somewhat relaxes some constraints that could be imposed on the pose of
+the camera - landmarks can be matched regardless of their image
+position.
+<P>
+<HR><A NAME="tex2html406" HREF="node24.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html404" HREF="node21.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html398" HREF="node22.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html408" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html407" HREF="node24.html">Example: A Small Database</A>
+<B>Up:</B> <A NAME="tex2html405" HREF="node21.html">Visual Tracking</A>
+<B> Previous:</B> <A NAME="tex2html399" HREF="node22.html">Landmark Recognition</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

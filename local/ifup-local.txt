@@ -1,0 +1,21 @@
+#!/bin/bash
+# ifup-local - called from ifup-post, 
+# This script will automagically log into UBC wireless (when eth1 is
+# activated), and set a zoneedit dynamic DNS entry for eth1 or eth0
+#
+# Put your actual usernames and passwords here..
+ubcusername=myubcusername
+ubcpasswd=myubcpasswd
+zoneusername=myzoneditusername
+zonepasswd=myzoneeditpassword
+zonehost=myzonedit.host.my.domain
+
+echo "Logging in to UBC wireless.."
+if [ "$1" = "eth1" ] ; then
+    /usr/bin/wget -O - 'https://login.wireless.ubc.ca:8090/goform/HtmlLoginRequest?username=${ubcusername}&password=${ubcpasswd}' > /dev/null
+fi
+ 
+echo "Setting ZoneEdit DNS entry.."
+if [ "$1" = "eth1" ] || [ "$1" = "eth0" ] ; then
+    /usr/bin/lynx -connect_timeout=60 -source -auth=${zoneusername}:${zonepasswd} 'http://dynamic.zoneedit.com/auth/dynamic.html?host=${zonehost}'
+fi

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Using the Edge Distribution</TITLE>
+<META NAME="description" CONTENT="Using the Edge Distribution">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html536" HREF="node35.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html534" HREF="node32.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html530" HREF="node33.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html538" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html537" HREF="node35.html">A Larger Scene</A>
+<B>Up:</B> <A NAME="tex2html535" HREF="node32.html">Parameter Variation</A>
+<B> Previous:</B> <A NAME="tex2html531" HREF="node33.html">Appearance-only Pose Estimates</A>
+<BR> <P>
+<H2><A NAME="SECTION001122000000000000000">Using the Edge Distribution</A></H2>
+<P>
+In the interests of avoiding complications due to lighting variation,
+one may wish to employ the edge map in the neighbourhood of candidate
+landmarks, rather than the local intensity distribution.  That is,
+apart from the initial task of detecting landmark candidates, we
+substitute the edge map of an image in place of its intensity map
+whenever an intensity distribution is called for in the method.
+Figure&nbsp;<A HREF="node34.html#edgsceneposplot">6.7</A> demonstrates the results of applying this
+technique to the Scene 1, for <IMG WIDTH=72 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap_inline4876" SRC="img113.gif"> and
+<IMG WIDTH=70 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline4878" SRC="img114.gif">.  The mean error in pose is 0.56cm.
+<P>
+<P><A NAME="1091">&#160;</A><A NAME="edgsceneposplot">&#160;</A><IMG WIDTH=342 HEIGHT=355 ALIGN=BOTTOM ALT="figure953" SRC="img115.gif"><BR>
+<STRONG>Figure 6.7:</STRONG> Estimation
+  results for edge-based estimation.  The plot depicts the set of pose
+  estimates for the twenty test cases in Scene I with <IMG WIDTH=72 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap_inline4876" SRC="img113.gif">
+  and <IMG WIDTH=70 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline4878" SRC="img114.gif">. The mean error is 0.56cm<BR>
+<P>
+<P>
+While Figure&nbsp;<A HREF="node34.html#edgsceneposplot">6.7</A> indicates that the method works
+marginally well for pose estimation, particularly along the <I>x</I> axis,
+performing purely appearance-based (<IMG WIDTH=44 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4862" SRC="img109.gif">) pose estimation using
+the edge distribution fares much worse, as shown in
+Figure&nbsp;<A HREF="node34.html#edgscenenoposplot">6.8</A>.  Our hypothesis is that
+instabilities and low-intensity noise<A NAME="tex2html37" HREF="footnode.html#961"><IMG  ALIGN=BOTTOM ALT="gif" SRC="icons/foot_motif.gif"></A> in the edge distribution compromise our assumption of local
+linearity.  Furthermore, we are employing linear analysis to
+reconstruct the output of a highly non-linear operator.
+<P>
+<P><A NAME="1093">&#160;</A><A NAME="edgscenenoposplot">&#160;</A><IMG WIDTH=342 HEIGHT=355 ALIGN=BOTTOM ALT="figure962" SRC="img117.gif"><BR>
+<STRONG>Figure 6.8:</STRONG> Estimation results for edge-based estimation using only
+  appearance.  The plot depicts the set of pose estimates for the
+  twenty test cases in Scene I with <IMG WIDTH=72 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap_inline4876" SRC="img113.gif"> and
+  <IMG WIDTH=60 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline4890" SRC="img116.gif">. The mean error is 2.0cm<BR>
+<P><BR> <HR>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

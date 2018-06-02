@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>A Simple Scene</TITLE>
+<META NAME="description" CONTENT="A Simple Scene">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html503" HREF="node32.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html501" HREF="node30.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html495" HREF="node30.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html505" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html504" HREF="node32.html">Parameter Variation</A>
+<B>Up:</B> <A NAME="tex2html502" HREF="node30.html">Experimental Results</A>
+<B> Previous:</B> <A NAME="tex2html496" HREF="node30.html">Experimental Results</A>
+<BR> <P>
+<H1><A NAME="SECTION001110000000000000000">A Simple Scene</A></H1>
+<P>
+<P><A NAME="866">&#160;</A><A NAME="scene1">&#160;</A><IMG WIDTH=241 HEIGHT=181 ALIGN=BOTTOM ALT="figure864" SRC="img96.gif"><BR>
+<STRONG>Figure 6.1:</STRONG> Scene I.<BR>
+<P>
+<P>
+Our first experiment considers a simple scene, as depicted in
+Figure&nbsp;<A HREF="node31.html#scene1">6.1</A>.  In this experiment, the camera is mounted on the
+end-effector of a gantry-mounted robot arm, providing six degrees of
+freedom.  The camera can be localised in the configuration space of
+the robot using the robot's dead-reckoning sensors to an accuracy of
+about 1.0cm, but if the orientation of the camera is fixed, the
+accuracy of the ground-truth position improves to about 0.1cm.  In
+this experiment, every effort is made to provide constant scene
+illumination.  The camera faces the scene at a fixed orientation from
+a distance of about 1.0m, and 121 training images are collected over a
+10cm by 10cm grid at 1.0cm intervals (that is, the sample spacing,
+<IMG WIDTH=8 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4758" SRC="img95.gif">=1.0cm).  Twenty test images are taken from random positions in
+order to test the method.  The random poses can lie anywhere within
+the domain defined by the boundaries of the sampled environment.
+That is, the test poses lie anywhere within the 10cm by 10cm square
+defined by the training samples.  In this experiment, the x-axis lies
+in the image plane of the camera, and is parallel to the horizon,
+pointing to the right.  The y-axis is perpendicular to the image plane
+of the camera, pointed in the direction that the camera faces.
+<P>
+The total time required for training, including candidate landmark
+extraction and the construction of an error model for each tracked
+landmark, but not including the time spent acquiring images, is 18
+minutes on a Silicon Graphics Octane.  Localisation results for the
+twenty test samples are obtained.  The time taken to obtain the test
+results, including the time required to extract candidate landmarks
+and match them to the tracked landmarks in the training set is 3m 12s,
+or 9.6 seconds per test image. One caveat for these statistics is that
+the implementation used to obtain them is a prototype to which
+optimisations have not been extensively applied.
+<P>
+For the purposes of visualisation, the set of sixteen tracked landmarks
+extracted from Scene I are depicted in Figure&nbsp;<A HREF="node31.html#trackedlms">6.2</A>.  While
+space prevents large-scale reproductions, one can observe the coverage of
+the configuration space that is obtained for the training set.
+<P>
+<P><A NAME="888">&#160;</A><A NAME="trackedlms">&#160;</A><IMG WIDTH=604 HEIGHT=812 ALIGN=BOTTOM ALT="figure871" SRC="img97.gif"><BR>
+<STRONG>Figure 6.2:</STRONG> The set of tracked landmarks extracted from Scene I.<BR>
+<P>
+<P>
+Figure&nbsp;<A HREF="node31.html#needle1">6.3</A> depicts the set of test results. Each 'o'
+corresponds to the position estimate obtained for the image taken at
+the location of the corresponding 'x'.  The grid crossings mark the
+locations of the training images.  The mean error, measured as the
+mean of the Euclidean distances between the estimates and their
+corresponding ground truth, is 0.12cm, or 12% of the sample spacing,
+<IMG WIDTH=8 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4758" SRC="img95.gif">.  Furthermore, the best-case error over all the test images
+is 0.004cm (less than the ground truth precision) and the worst case
+error over all the test samples is only 0.44cm, or 44% of <IMG WIDTH=8 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4758" SRC="img95.gif">.
+<P>
+<P><A NAME="894">&#160;</A><A NAME="needle1">&#160;</A><IMG WIDTH=342 HEIGHT=355 ALIGN=BOTTOM ALT="figure892" SRC="img98.gif"><BR>
+<STRONG>Figure 6.3:</STRONG> Position estimates and corresponding ground truth for
+  twenty random samples from Scene I. Each 'o' marks the estimate obtained for the
+  image taken at the location of the corresponding 'x'. Grid crossings
+  mark the locations of the training images. the mean estimation error
+  is 0.12cm.<BR>
+<P><HR><A NAME="tex2html503" HREF="node32.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html501" HREF="node30.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html495" HREF="node30.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html505" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html504" HREF="node32.html">Parameter Variation</A>
+<B>Up:</B> <A NAME="tex2html502" HREF="node30.html">Experimental Results</A>
+<B> Previous:</B> <A NAME="tex2html496" HREF="node30.html">Experimental Results</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

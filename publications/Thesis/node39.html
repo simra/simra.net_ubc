@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Recovering Orientation</TITLE>
+<META NAME="description" CONTENT="Recovering Orientation">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html589" HREF="node40.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html587" HREF="node30.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html583" HREF="node38.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html591" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html590" HREF="node40.html">Discussion and Conclusions</A>
+<B>Up:</B> <A NAME="tex2html588" HREF="node30.html">Experimental Results</A>
+<B> Previous:</B> <A NAME="tex2html584" HREF="node38.html">Laboratory Environment Revisited</A>
+<BR> <P>
+<H1><A NAME="SECTION001150000000000000000">Recovering Orientation</A></H1>
+<P>
+Throughout our experimentation, we have constrained the pose of the
+robot such that it faces in a consistent orientation.  While one could
+conceivably train the robot in a higher dimensional configuration
+space, the computational and storage costs would be too high.  To
+close this chapter, we propose instead that orientation can be
+recovered given a database that is trained for only one orientation.
+Our goal is to measure the degree to which the set of independent pose
+estimates are consistent with one another. This is accomplished by
+employing a <em>consistency</em> measure,
+<BR><IMG WIDTH=500 HEIGHT=41 ALIGN=BOTTOM ALT="equation1048" SRC="img132.gif"><BR>
+where
+<BR><IMG WIDTH=500 HEIGHT=35 ALIGN=BOTTOM ALT="equation1052" SRC="img133.gif"><BR>
+is the square-root of the sum of the variances (one for each axis -
+<IMG WIDTH=18 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline4958" SRC="img134.gif"> and <IMG WIDTH=18 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline4960" SRC="img135.gif">) of the set of independent pose
+estimates obtained for each matched landmark candidate in the image,
+<I>G</I> is the percentage of independent pose estimates which are not
+rejected as outliers, <I>P</I> is the percentage of 'matched' candidate
+landmarks - that is, the ratio of the number of successful
+candidate-tracked landmark matches out of all detected landmark
+candidates, and finally, <I>R</I> is the raw number of retained independent
+pose estimates.  Clearly, from these values, lower values of <I>M</I>
+indicate that there is good consistency between the measurements
+obtained from the image and the training database.
+<P>
+Given our consistency measure, <I>M</I>, we can recover the robot's
+orientation by rotating the robot through <IMG WIDTH=35 HEIGHT=16 ALIGN=BOTTOM ALT="tex2html_wrap_inline4972" SRC="img136.gif">, taking an image at
+each orientation (or a set of sample orientations) and finding <I>M</I>.
+The orientation at which <I>M</I> is minimised is considered to be the
+correct orientation.
+<P>
+Figure&nbsp;<A HREF="node39.html#rot1">6.20</A> plots <I>M</I> for a series of orientations taken at
+<IMG WIDTH=26 HEIGHT=16 ALIGN=BOTTOM ALT="tex2html_wrap_inline4980" SRC="img137.gif"> increments from Scene IV.  The correct orientation is correctly
+predicted to be <IMG WIDTH=17 HEIGHT=16 ALIGN=BOTTOM ALT="tex2html_wrap_inline4982" SRC="img138.gif">.  
+<P><A NAME="1113">&#160;</A><A NAME="rot1">&#160;</A><IMG WIDTH=486 HEIGHT=401 ALIGN=BOTTOM ALT="figure1059" SRC="img139.gif"><BR>
+<STRONG>Figure 6.20:</STRONG> The consistency measure plotted as a function of
+    orientation. The correct orientation is <IMG WIDTH=17 HEIGHT=16 ALIGN=BOTTOM ALT="tex2html_wrap_inline4982" SRC="img138.gif">.<BR>
+<P>
+<P>
+The results in Figure&nbsp;<A HREF="node39.html#rot1">6.20</A> indicate that the measure is useful
+for recovering the orientation of the robot when it is unknown. This
+result greatly increases the utility of the method, since the robot
+pose need not be constrained while online (provided that it is
+constrained during the training phase, which is supervised), and
+dead-reckoning errors in orientation can be corrected.
+<P>
+<HR><A NAME="tex2html589" HREF="node40.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html587" HREF="node30.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html583" HREF="node38.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html591" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html590" HREF="node40.html">Discussion and Conclusions</A>
+<B>Up:</B> <A NAME="tex2html588" HREF="node30.html">Experimental Results</A>
+<B> Previous:</B> <A NAME="tex2html584" HREF="node38.html">Laboratory Environment Revisited</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

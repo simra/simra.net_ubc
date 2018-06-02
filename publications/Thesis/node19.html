@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Feature Interpretation</TITLE>
+<META NAME="description" CONTENT="Feature Interpretation">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html361" HREF="node20.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html359" HREF="node17.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html353" HREF="node18.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html363" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html362" HREF="node20.html">Landmark Detection</A>
+<B>Up:</B> <A NAME="tex2html360" HREF="node17.html">Learning Landmarks</A>
+<B> Previous:</B> <A NAME="tex2html354" HREF="node18.html">Edge Detection</A>
+<BR> <P>
+<H1><A NAME="SECTION00820000000000000000">Feature Interpretation</A></H1>
+<P>
+Several promising methods have been developed for grouping edge
+elements into high level <em>viewpoint-invariant</em> or
+<em>pseudo-invariant</em> features such as curves or closed
+contours&nbsp;[<A HREF="node50.html#WilliamsLa1995c">61</A>, <A HREF="node50.html#Elder1996">21</A>, <A HREF="node50.html#Iverson:93">29</A>, <A HREF="node50.html#BengtssonEklundh91">7</A>, <A HREF="node50.html#hebert93">26</A>],
+and yet performing this task in a robust, stable and
+environment-independent manner appears to be a problem that is not yet
+fully resolved.  Furthermore, the issues of scene dynamics and active
+observers further complicate the interpretation of grouped structures.
+<P>
+A canonical example of how feature extraction can be unstable for even
+the simplest of scenes is demonstrated in Figure&nbsp;<A HREF="node19.html#sphere">3.1</A>, wherein
+two objects appear.  The difficulty for the feature extractor is
+whether to interpret the scene as two spheres abutting on the left and
+right, two cusps abutting on the top and bottom, or even two wires
+crossing one another. Without other high-level semantic cues from the
+environment, it is impossible for even a human to resolve this
+ambiguity.  This figure-ground issue has been the subject
+of a wide variety of phenomenological studies in biological and
+computational vision systems&nbsp;[<A HREF="node50.html#kubovy81">34</A>].
+<P>
+<P><A NAME="225">&#160;</A><A NAME="sphere">&#160;</A><IMG WIDTH=110 HEIGHT=111 ALIGN=BOTTOM ALT="figure223" SRC="img6.gif"><BR>
+<STRONG>Figure 3.1:</STRONG> Figure-ground ambiguity in the interpretation of two objects.<BR>
+<P>
+<P>
+As a second example, consider the more complicated case of two common
+structures and their interaction from a moving observer's perspective.
+Figure&nbsp;<A HREF="node19.html#table">3.2</A> shows the sequence of a table passing in front of a
+door frame due to a translation on the part of the observer (for the
+sake of simplicity, the legs are not drawn). Clearly, any imaginable
+choice of local feature content (junctions, lines, closed curves,
+<em>et cetera</em>) will result in instabilities near the intersection
+of the table and door as the table first occludes the left edge of the
+door frame, then bisects the door, and finally clears the right edge of
+the door frame.
+<P>
+<P><A NAME="232">&#160;</A><A NAME="table">&#160;</A><IMG WIDTH=414 HEIGHT=157 ALIGN=BOTTOM ALT="figure230" SRC="img7.gif"><BR>
+<STRONG>Figure 3.2:</STRONG> A table passing in front of a door.<BR>
+<P>
+<P>
+Given the apparent difficulties encountered by edge interpretation
+techniques, it might be surprising to suggest that the
+<em>distribution</em> of edge elements in a scene is also closely
+related to basic scene structure, and yet can offer greater stability
+for tracking.  This idea is motivated by the fact that characterising
+the distribution of edges is decoupled from their interpretation.
+Furthermore, the edge element distribution shares similar advantages
+with the underlying edge map, such as robustness to variations in
+illumination. Finally, one can expect that a local description of
+the edge distribution will vary smoothly with changes in camera
+pose.
+<P>
+<HR><A NAME="tex2html361" HREF="node20.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html359" HREF="node17.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html353" HREF="node18.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html363" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html362" HREF="node20.html">Landmark Detection</A>
+<B>Up:</B> <A NAME="tex2html360" HREF="node17.html">Learning Landmarks</A>
+<B> Previous:</B> <A NAME="tex2html354" HREF="node18.html">Edge Detection</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

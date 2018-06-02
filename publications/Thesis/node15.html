@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Sensor Inversion</TITLE>
+<META NAME="description" CONTENT="Sensor Inversion">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html316" HREF="node16.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html314" HREF="node11.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html308" HREF="node14.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html318" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html317" HREF="node16.html">Visual Attention</A>
+<B>Up:</B> <A NAME="tex2html315" HREF="node11.html">Previous Work</A>
+<B> Previous:</B> <A NAME="tex2html309" HREF="node14.html">Feature-Based Methods</A>
+<BR> <P>
+<H1><A NAME="SECTION00740000000000000000">Sensor Inversion</A></H1>
+<P>
+The vast majority of localisation methods considered thus far are
+subject to a number of crucial assumption and constraints.  First, the
+robot is constrained to move over a planar surface, in an environment
+composed exclusively of rectilinear structures, and wherein its
+sensors must meet strict pose constraints.  Second, the robot relies
+on the robust extraction of features, which are often based on
+assumptions about the characteristics of the environment.  Finally, many
+of the methods depend on an accurate <em>a priori</em> map.
+<P>
+A number of researchers have developed methods which avoid the use of
+explicit features or maps.  These methods express the sensor data as a
+function of the pose of the robot, and attempt to invert this
+function. In other words, these methods perform <em>sensor
+  inversion</em>.  Principal components analysis (PCA), sometimes known as
+eigenspace analysis, is a general pattern classification technique
+which has enjoyed successful application in the domain of face and
+object recognition and has recently seen some success in the problem
+of position
+estimation&nbsp;[<A HREF="node50.html#nayar94">44</A>, <A HREF="node50.html#belhumeur97:_eigen">6</A>, <A HREF="node50.html#Duda:1972:PCS">19</A>, <A HREF="node50.html#crowley98">16</A>].
+PCA treats dense sensor data (such as that from a camera) or an
+extracted feature vector as a vector in a high dimensional space, and
+classifies the input data based on a projection of that vector into a
+subspace that maximises its discrimination from other samples.  Nayar
+<em>et al</em> have developed a method for correcting the pose of a
+camera mounted on an end effector by employing a <em>principal
+  components</em> representation of the space of possible camera
+views&nbsp;[<A HREF="node50.html#nayar94">44</A>] and Jepson and Black have used eigenspace
+techniques for tracking objects which undergo changes in
+pose&nbsp;[<A HREF="node50.html#Black:1996:ETR">10</A>].    These methods are similar to the Kalman
+Filter in that they rely on a linear approximation to the underlying
+behaviour of the data, yet they differ in that they do not rely on
+explicitly interpreted features but linearise the statistical
+variation of the data in order to choose maximally discriminating
+features, which are unlikely to hold any explicit semantic value.
+<P>
+Dudek and Zhang have also employed the notion of sensor inversion in
+their implementation of image-based position
+estimation&nbsp;[<A HREF="node50.html#dudek96">20</A>].  In that work, a neural network was
+employed to invert the edge statistics of an image as a function of
+position. In similar work, Oore, Hinton and Dudek have implemented a
+position estimator as a neural network which processes sonar
+data&nbsp;[<A HREF="node50.html#Oore1997">47</A>]. While neural networks have been shown to give good
+results for highly nonlinear or complex input, they can be difficult
+to tune, which is a particular difficulty in the face of the fact that
+retraining is usually required after changes to the environment.
+In addition, the behaviour of a particular implementation can be
+difficult to evaluate, and may be inconsistent with the same
+implementation under different environmental conditions.  Another
+difficulty posed by the use of neural networks is the solutions often
+depend on global features.  That is, such methods will tend to fail
+completely in the presence of outliers, such as the cases when part of
+the image becomes obscured (perhaps by another robot or person passing
+through the field of view of the camera), or the camera fails to meet
+the pose constraints.
+<P>
+A significant problem associated with the problem of sensor inversion
+in general is that the function to be inverted may not be not one-to-one, a
+situation which may not be easily detected <em>a priori</em>.  Dudek and
+Zhang consider this difficulty in their work by implementing a
+<em>consistency</em> measure which incorporates multiple measurements
+under different viewing conditions in order to achieve optimal
+consistency in the resulting pose estimate&nbsp;[<A HREF="node50.html#dudek96">20</A>].
+<P>
+<HR><A NAME="tex2html316" HREF="node16.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html314" HREF="node11.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html308" HREF="node14.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html318" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html317" HREF="node16.html">Visual Attention</A>
+<B>Up:</B> <A NAME="tex2html315" HREF="node11.html">Previous Work</A>
+<B> Previous:</B> <A NAME="tex2html309" HREF="node14.html">Feature-Based Methods</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

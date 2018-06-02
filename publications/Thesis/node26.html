@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Estimation by Linear Combination</TITLE>
+<META NAME="description" CONTENT="Estimation by Linear Combination">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html441" HREF="node27.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html439" HREF="node25.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html433" HREF="node25.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html443" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html442" HREF="node27.html">Robust Estimate Combination</A>
+<B>Up:</B> <A NAME="tex2html440" HREF="node25.html">Position Estimation</A>
+<B> Previous:</B> <A NAME="tex2html434" HREF="node25.html">Position Estimation</A>
+<BR> <P>
+<H1><A NAME="SECTION001010000000000000000">Estimation by Linear Combination</A></H1>
+<P>
+<A NAME="elc">&#160;</A>
+<P>
+When a position estimate is required, an image is obtained and
+landmarks are extracted by selecting the local maxima of edge density,
+as described in Chapter&nbsp;<A HREF="node17.html#landmarks">3</A>.  The extracted candidate
+landmarks must then be matched to the <em>tracked landmarks</em> in the
+database, which is accomplished using the procedure outlined in
+Chapter&nbsp;<A HREF="node21.html#tracking">4</A>, neglecting the steps which modify the
+database.  That is, each landmark candidate <I>l</I> undergoes a local
+position adjustment to find a best match to each tracked landmark <I>T</I>,
+and the tracked landmark whose prototype is unambiguously closest to
+the encoding of <I>l</I> is selected as the match. Figure&nbsp;<A HREF="node26.html#matches">5.1</A>
+shows the results of matching the landmarks observed in an image with
+the prototypes of a set of tracked landmarks (which were depicted
+previously in Figure&nbsp;<A HREF="node22.html#eigenpicturesb">4.2(b)</A>).  The top row of intensity
+distributions corresponds to the landmarks observed in the image
+(after their positions were adjusted to optimise the matching),
+whereas the bottom row represents the prototypes to which the
+corresponding landmarks were matched. While at first glance, the
+images appear to be identical, there are some very subtle differences
+in appearance, as well as undepicted differences in position in the image.
+<P>
+<P><A NAME="548">&#160;</A><A NAME="matches">&#160;</A><IMG WIDTH=414 HEIGHT=91 ALIGN=BOTTOM ALT="figure546" SRC="img48.gif"><BR>
+<STRONG>Figure 5.1:</STRONG> Landmark-prototype matches for a single image: The top row of
+  intensity distributions corresponds to the landmarks observed in the
+  image (after their positions were adjusted to optimise the
+  matching), whereas the bottom row represents the prototypes to which
+  the corresponding landmarks were matched.  While at first glance,
+  the images appear to be identical, there are some very subtle
+  differences in appearance.<BR>
+<P>
+<P>
+Once landmark matching is accomplished, we exploit an assumption of
+linear variation in the landmark characteristics with respect to
+camera pose in order to obtain a position estimate.  If the assumption
+of smoothly linear local variation in the landmark is true, then the
+encoding of the landmark observed from an unknown camera position will
+be a linear combination of the encodings of the tracked models,
+allowing us to <em>interpolate</em> between the sample positions in the
+database. We will later present a method for quantitatively evaluating
+the reliability of the linearity assumption, and which will allow us
+to obtain a measure of <em>confidence</em> in the results.  For the
+remainder of this section, let us assume that we have observed a
+single landmark <I>l</I> in the world and it has been correctly matched to
+the tracked landmark <I>T</I>.
+<P>
+Let us define the <em>encoding</em> <IMG WIDTH=15 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4490" SRC="img49.gif"> of a landmark candidate
+<I>l</I> as the projection of the intensity distribution in the image
+neighbourhood represented by <I>l</I> into the subspace defined by the
+principal components decomposition of the set of all tracked landmark
+prototypes. We repeat equation&nbsp;<A HREF="node22.html#project">4.2</A> with slightly different
+terminology here for reference:
+<BR><A NAME="project3">&#160;</A><IMG WIDTH=500 HEIGHT=22 ALIGN=BOTTOM ALT="equation557" SRC="img50.gif"><BR>
+where <IMG WIDTH=5 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4496" SRC="img51.gif"> is the local intensity distribution of <I>l</I>
+normalised to unit magnitude and <IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4346" SRC="img28.gif"> is the set of principal
+directions of the space defined by the tracked landmark prototypes.
+<P>
+Let us now define a <em>feature-vector</em> <IMG WIDTH=8 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4502" SRC="img52.gif"> associated with
+a landmark candidate <I>l</I> as the principal components encoding
+<IMG WIDTH=11 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4506" SRC="img53.gif">, concatenated with two vector quantities: the image
+position <IMG WIDTH=11 HEIGHT=19 ALIGN=MIDDLE ALT="tex2html_wrap_inline4508" SRC="img54.gif"> of the landmark, and the camera position
+<IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> from which the landmark was observed:
+<BR><A NAME="featurevector">&#160;</A><IMG WIDTH=500 HEIGHT=34 ALIGN=BOTTOM ALT="equation570" SRC="img55.gif"><BR>
+where, in this particular instance alone, the notation <IMG WIDTH=34 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline4512" SRC="img56.gif"> represents the concatenation of the vectors
+<IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4514" SRC="img57.gif"> and <IMG WIDTH=11 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4516" SRC="img58.gif">.
+<P>
+Given the associated feature vector <IMG WIDTH=11 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4518" SRC="img59.gif"> for each landmark
+<IMG WIDTH=9 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4444" SRC="img41.gif"> in the tracked landmark <IMG WIDTH=154 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline4522" SRC="img60.gif">, we
+construct a matrix <IMG WIDTH=12 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4524" SRC="img61.gif"> as the composite matrix of all
+<IMG WIDTH=11 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4518" SRC="img59.gif">, arranged in column-wise fashion, and then take the
+singular values decomposition of <IMG WIDTH=12 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4524" SRC="img61.gif">,
+<BR><IMG WIDTH=500 HEIGHT=61 ALIGN=BOTTOM ALT="equation592" SRC="img62.gif"><BR>
+to obtain <IMG WIDTH=26 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4530" SRC="img63.gif">, representing the set of eigenvectors of the
+tracked landmark <I>T</I> arranged in column-wise fashion.  Note that since
+<IMG WIDTH=13 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4534" SRC="img64.gif"> is a component of each <IMG WIDTH=11 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4518" SRC="img59.gif">, <IMG WIDTH=26 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4530" SRC="img63.gif">
+encodes camera position along with appearance.  Now consider the
+feature vector <IMG WIDTH=11 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4540" SRC="img65.gif"> associated with <I>l</I>, the observed landmark
+for which we have no pose information - that is, the <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif">
+component of <IMG WIDTH=11 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4540" SRC="img65.gif"> is undetermined.  If we project
+<IMG WIDTH=11 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4540" SRC="img65.gif"> into the subspace defined by <IMG WIDTH=26 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4530" SRC="img63.gif"> to obtain
+<BR><IMG WIDTH=500 HEIGHT=22 ALIGN=BOTTOM ALT="equation615" SRC="img66.gif"><BR>
+and then reconstruct <IMG WIDTH=11 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4540" SRC="img65.gif"> from <IMG WIDTH=10 HEIGHT=19 ALIGN=MIDDLE ALT="tex2html_wrap_inline4554" SRC="img67.gif"> to obtain the
+feature vector
+<BR><IMG WIDTH=500 HEIGHT=20 ALIGN=BOTTOM ALT="equation622" SRC="img68.gif"><BR>
+then the resulting reconstruction <IMG WIDTH=13 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline4556" SRC="img69.gif"> is augmented by a
+camera pose estimate that interpolates between the nearest
+eigenvectors in <IMG WIDTH=26 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4530" SRC="img63.gif">.  In practice, the initial value of the
+undetermined camera pose, <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> in <IMG WIDTH=11 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4540" SRC="img65.gif"> will play a
+role in the resulting estimate and so we substitute the new value of
+<IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> back into <IMG WIDTH=11 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4540" SRC="img65.gif"> and repeat the operation,
+reconstructing <IMG WIDTH=13 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline4556" SRC="img69.gif"> until the estimate converges to a
+steady state.  This repeated operation, which constitutes the recovery
+of the unknown <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> is summarised in Figure&nbsp;<A HREF="node26.html#flowchart">5.2</A>.
+<P>
+<P><A NAME="808">&#160;</A><A NAME="flowchart">&#160;</A><IMG WIDTH=588 HEIGHT=187 ALIGN=BOTTOM ALT="figure636" SRC="img70.gif"><BR>
+<STRONG>Figure 5.2:</STRONG> The recovery operation. The unknown
+camera position <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> associated with a landmark <I>l</I> is
+recovered by repeatedly reconstructing the landmark feature vector in
+the subspace defined by the matching tracked landmark.<BR>
+<P>
+<P>
+Formally,
+<BR><IMG WIDTH=500 HEIGHT=23 ALIGN=BOTTOM ALT="equation641" SRC="img71.gif"><BR>
+where <IMG WIDTH=41 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4576" SRC="img72.gif"> is the optimising scatter matrix of the feature
+vectors in <I>T</I>, and hence <IMG WIDTH=13 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline4556" SRC="img69.gif"> corresponds to the
+least-squares approximation of <IMG WIDTH=8 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4502" SRC="img52.gif"> in the subspace defined by
+the feature vectors of the tracked tracked landmark <I>T</I>.  Convergence
+is guaranteed by the fact that <IMG WIDTH=26 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4530" SRC="img63.gif"> is column-orthonormal and
+hence <IMG WIDTH=41 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4576" SRC="img72.gif"> is symmetric and positive-definite.
+Convergence is typically achieved in two or three iterations, as
+depicted in Figure&nbsp;<A HREF="node26.html#converge">5.3</A>.
+<P>
+<P><A NAME="660">&#160;</A><A NAME="converge">&#160;</A><IMG WIDTH=313 HEIGHT=254 ALIGN=BOTTOM ALT="figure658" SRC="img73.gif"><BR>
+<STRONG>Figure 5.3:</STRONG> Convergence
+  properties for a single training set.  The average convergence path,
+  expressed in terms of distance from the steady-state, is plotted as
+  a function of the number of iterations.  <BR>
+<P>
+<P>
+There are some subtleties to the estimation procedure that we have not
+yet acknowledged.  First, since <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> is unknown at the outset,
+there is an issue of what value to assign to <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> in
+<IMG WIDTH=11 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline4540" SRC="img65.gif">.  In practice, we set <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> to be the mean of
+all camera poses <IMG WIDTH=13 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4534" SRC="img64.gif"> in <I>T</I>.  One might choose instead to
+use an <em>a priori</em> pose estimate.  We will consider this
+possibility when we present our experimental results in
+Chapter&nbsp;<A HREF="node30.html#experiment">6</A>.  Second, there is an issue over how the
+camera pose <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> and image position <IMG WIDTH=11 HEIGHT=19 ALIGN=MIDDLE ALT="tex2html_wrap_inline4508" SRC="img54.gif"> should be
+weighted when constructing a feature vector.  Ideally, one would scale
+<IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> down to a tiny fraction of <IMG WIDTH=11 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4506" SRC="img53.gif"> in order to
+downplay the effect that <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> has on the subspace. If <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif">
+plays too strong a role in the subspace, then the reconstruction
+process will be ineffective.  As for the image position, one can
+arbitrarily scale <IMG WIDTH=11 HEIGHT=19 ALIGN=MIDDLE ALT="tex2html_wrap_inline4508" SRC="img54.gif"> in order to weight its relative
+importance versus <IMG WIDTH=11 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4506" SRC="img53.gif">. Such a weighting determines the degree
+to which we favour image <em>geometry</em> over <em>appearance</em>.  We will
+consider the effects of varying the weight of both <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> and
+<IMG WIDTH=11 HEIGHT=19 ALIGN=MIDDLE ALT="tex2html_wrap_inline4508" SRC="img54.gif"> in Chapter&nbsp;<A HREF="node30.html#experiment">6</A>.
+<P>
+Figure&nbsp;<A HREF="node26.html#rawests">5.4</A> depicts a set of estimates obtained for the
+landmarks detected in a single image.  While most of the estimates are
+reasonably accurate, at least one point may be considered an outlier,
+most likely produced by nonlinearities in the tracked
+landmark, poor tracking, or a match that is altogether incorrect.
+The next section will deal with the problem of detecting and removing
+outliers as well as combining the good estimates in way that is
+numerically robust.
+<P>
+<P><A NAME="687">&#160;</A><A NAME="rawests">&#160;</A><IMG WIDTH=364 HEIGHT=376 ALIGN=BOTTOM ALT="figure684" SRC="img74.gif"><BR>
+<STRONG>Figure 5.4:</STRONG> Position
+    estimate for a single test image. Each 'x' marks an estimate as
+    obtained from a single landmark in the image. The 'o' represents
+    the actual position. The training images were obtained at the
+    locations of the grid intersections.<BR>
+<P><HR><A NAME="tex2html441" HREF="node27.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html439" HREF="node25.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html433" HREF="node25.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html443" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html442" HREF="node27.html">Robust Estimate Combination</A>
+<B>Up:</B> <A NAME="tex2html440" HREF="node25.html">Position Estimation</A>
+<B> Previous:</B> <A NAME="tex2html434" HREF="node25.html">Position Estimation</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

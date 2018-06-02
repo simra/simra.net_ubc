@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Introduction</TITLE>
+<META NAME="description" CONTENT="Introduction">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html210" HREF="node7.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html208" HREF="foe.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html202" HREF="node5.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html212" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html211" HREF="node7.html">Problem Statement</A>
+<B>Up:</B> <A NAME="tex2html209" HREF="foe.html">Mobile Robot Localisation Using </A>
+<B> Previous:</B> <A NAME="tex2html203" HREF="node5.html">List of Figures</A>
+<BR> <P>
+<H1><A NAME="SECTION00600000000000000000">Introduction</A></H1>
+<P>
+In order for a mobile robot to perform its assigned tasks, it often
+requires a representation of its environment, a knowledge of how to
+navigate in its environment, and a method for determining its position
+in the environment.  These problems have been characterised by the
+three fundamental questions of mobile robotics, that is ``Where am
+I?'', ``Where am I going?'' and ``How can I get there?''.  This thesis
+is concerned principally with a method for answering the first
+question, that of position estimation, which is commonly referred to
+as <em>localisation</em>.
+<P>
+A naive approach to robot localisation is to use odometers or
+accelerometers to measure the displacements of the robot. This
+approach, known as <em>dead reckoning</em>, is subject to errors due to
+external factors beyond the robot's control, such as wheel slippage,
+or collisions.  More importantly, dead reckoning errors increase
+without bound unless the robot employs sensor feedback in order to
+recalibrate its position estimate.
+<P>
+A key issue in developing a solution to the localisation problem is
+that of domain dependence.  The majority of localisation methods are
+constructed based on explicit and/or implicit assumptions about the
+environment&nbsp;[<A HREF="node50.html#Leonard:91">36</A>].  In the context of machine vision, for
+example, many techniques extract domain-dependent features from the
+image, such as straight lines or corners - features which may not be
+present or stable outside of structured office or industrial
+environments.  Hence, a goal of the method presented here is to
+achieve <em>domain independence</em>.  We achieve this goal by
+<em>learning</em> the features or <em>landmarks</em> which are useful for
+the particular domain under consideration.  While moving to a new
+domain will always require retraining (that is, exploration), the
+methods presented here are general in the sense that the same off-line
+training and on-line estimation methods can be employed in a new
+domain with little or no
+alteration.
+<P>
+In addition to domain dependence, solutions to the problem of robot
+localisation are necessarily <em>sensor-dependent</em>.  For example, a
+wide range of solutions have been proposed which use sonar sensor
+data. Given the sparse two-dimensional information that a sonar sensor
+provides, these particular solutions are unlikely to be easily
+applicable to the dense three dimensional image data obtained from a
+laser range-finder or stereo cameras.  Furthermore, the geometric
+interpretation of two- or three- dimensional range data obtained from
+sonar, stereo cameras, or laser range-finders is subject to
+instabilities and issues of non-invertibility.  In
+addition, each sensor has its own set of strengths and limitations.
+Sonar sensors are inherently noisy, whereas laser range-finders and
+stereo cameras can be prohibitively expensive or difficult to
+calibrate. For all of these reasons, we have chosen to use a single
+digital camera for localisation.  The camera is a sensor which is at
+once inexpensive, and provides large quantities of data at low
+computational cost, possessing relatively a low signal-to-noise ratio.
+<P>
+<BR> <HR>
+<UL><A NAME="CHILD_LINKS">&#160;</A>
+<LI> <A NAME="tex2html213" HREF="node7.html#SECTION00610000000000000000">Problem Statement</A>
+<LI> <A NAME="tex2html214" HREF="node8.html#SECTION00620000000000000000">Approach</A>
+<LI> <A NAME="tex2html215" HREF="node9.html#SECTION00630000000000000000">Applications</A>
+<LI> <A NAME="tex2html216" HREF="node10.html#SECTION00640000000000000000">Outline</A>
+</UL>
+<HR><A NAME="tex2html210" HREF="node7.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html208" HREF="foe.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html202" HREF="node5.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html212" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html211" HREF="node7.html">Problem Statement</A>
+<B>Up:</B> <A NAME="tex2html209" HREF="foe.html">Mobile Robot Localisation Using </A>
+<B> Previous:</B> <A NAME="tex2html203" HREF="node5.html">List of Figures</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

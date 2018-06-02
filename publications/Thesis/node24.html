@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Example: A Small Database</TITLE>
+<META NAME="description" CONTENT="Example: A Small Database">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html415" HREF="node25.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html413" HREF="node21.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html409" HREF="node23.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html417" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html416" HREF="node25.html">Position Estimation</A>
+<B>Up:</B> <A NAME="tex2html414" HREF="node21.html">Visual Tracking</A>
+<B> Previous:</B> <A NAME="tex2html410" HREF="node23.html">Landmark Tracking</A>
+<BR> <P>
+<H1><A NAME="SECTION00930000000000000000">Example: A Small Database</A></H1>
+<P>
+<P><A NAME="445">&#160;</A><A NAME="images">&#160;</A><A NAME="i_04000_00000">&#160;</A><A NAME="i_02000_00000">&#160;</A><A NAME="i_00000_00000">&#160;</A><IMG WIDTH=662 HEIGHT=198 ALIGN=BOTTOM ALT="figure438" SRC="img43.gif"><BR>
+<STRONG>Figure 4.4:</STRONG> The initial images and landmark candidates.<BR>
+<P>
+<P>
+As a concrete example, we will step through the tracking method over a
+series of three images, applying Algorithm&nbsp;<A HREF="node23.html#trackalg">2.1</A> to each.
+The images used are shown in Figure&nbsp;<A HREF="node24.html#images">4.4</A> with their initial
+candidate landmarks superimposed as squares.  At each step the
+landmarks under consideration will be depicted along with their
+matching prototypes in the database.  As new prototypes are detected,
+they are added to the set of depicted prototypes.
+<P>
+<OL>
+<LI> The image closest to the centroid of the configuration space is
+selected as the bootstrap image.  Hence we choose the image in
+Fig.&nbsp;<A HREF="node24.html#i_02000_00000">4.4(b)</A>, and initialise the set of tracked
+landmarks to the candidate landmarks in the image as shown in
+Figure&nbsp;<A HREF="node24.html#tl1a">4.5(a)</A>.
+<P>
+<P><A NAME="458">&#160;</A><A NAME="tl1">&#160;</A><A NAME="tl1b">&#160;</A><A NAME="tl1a">&#160;</A><IMG WIDTH=380 HEIGHT=195 ALIGN=BOTTOM ALT="figure453" SRC="img44.gif"><BR>
+<STRONG>Figure 4.5:</STRONG> Tracked landmarks and eigenlandmarks built from the bootstrap image.<BR>
+<P>
+<LI> The principal components subspace of the prototypes is
+constructed (Figure&nbsp;<A HREF="node24.html#tl1b">4.5(b)</A>).
+<LI> The remaining images are sorted on increasing distance from the
+centroid of the explored configuration space.  In this particular
+example, the choice of which image comes first is arbitrary, since
+both images are equidistant from the centroid.
+<LI> Algorithm&nbsp;<A HREF="node23.html#trackalg">2.1</A> is applied to the candidate landmarks
+in Figure&nbsp;<A HREF="node24.html#i_00000_00000">4.4(a)</A>.  The positions of some of the
+candidate landmarks are adjusted to obtain better matches (compare the
+resulting set of candidate landmarks in Figure&nbsp;<A HREF="node24.html#adjusted1">4.6(a)</A> with
+the originals in Figure&nbsp;<A HREF="node24.html#i_00000_00000">4.4(a)</A>), while
+others have no suitable match and hence become prototypes for new
+tracked landmarks.  The updated set of prototypes is depicted in
+Figure&nbsp;<A HREF="node24.html#tl2a">4.6(b)</A>.
+<P>
+<P><A NAME="527">&#160;</A><A NAME="tl2b">&#160;</A><A NAME="tl2a">&#160;</A><A NAME="adjusted1">&#160;</A><IMG WIDTH=380 HEIGHT=515 ALIGN=BOTTOM ALT="figure467" SRC="img45.gif"><BR>
+<STRONG>Figure:</STRONG> Results of adding Figure&nbsp;<A HREF="node24.html#i_00000_00000">4.4(a)</A> to the database.<BR>
+<P>
+<LI> Since the set of prototypes changed with the last addition, the
+principal components subspace is recomputed (Figure&nbsp;<A HREF="node24.html#tl2b">4.6(c)</A>).
+<LI> Algorithm&nbsp;<A HREF="node23.html#trackalg">2.1</A> is applied once again to the candidate
+landmarks in Figure&nbsp;<A HREF="node24.html#i_04000_00000">4.4(c)</A>.  Again, some of the
+candidates change positions, and others become new prototypes. 
+A new subspace is also constructed (Figure&nbsp;<A HREF="node24.html#tl3">4.7</A>).
+<P>
+<P><A NAME="531">&#160;</A><A NAME="tl3">&#160;</A><A NAME="tl3b">&#160;</A><A NAME="tl3a">&#160;</A><A NAME="adjusted2">&#160;</A><IMG WIDTH=380 HEIGHT=515 ALIGN=BOTTOM ALT="figure481" SRC="img46.gif"><BR>
+<STRONG>Figure:</STRONG> Results of adding Figure&nbsp;<A HREF="node24.html#i_04000_00000">4.4(c)</A> to the database.<BR>
+<P></OL>
+<P>
+Figure&nbsp;<A HREF="node24.html#finala">4.8(a)</A> depicts the set of prototypes for all the
+tracked landmarks found for a wider sampling of the environment
+depicted in Figure&nbsp;<A HREF="node24.html#images">4.4</A>.  The images are collected at 20cm
+intervals over a 3.0m by 1.2m grid.  The principal components of the
+subspace are depicted in Figure&nbsp;<A HREF="node24.html#finalb">4.8(b)</A>.
+<P>
+<P><A NAME="534">&#160;</A><A NAME="final">&#160;</A><A NAME="finalb">&#160;</A><A NAME="finala">&#160;</A><IMG WIDTH=544 HEIGHT=514 ALIGN=BOTTOM ALT="figure496" SRC="img47.gif"><BR>
+<STRONG>Figure:</STRONG> The final set of a) prototypes and b) principal components for a
+traversal of the environment depicted in part in Figure&nbsp;<A HREF="node24.html#images">4.4</A>.<BR>
+<P>
+<P>
+Once tracking has been performed, a minor filtering operation is
+conducted on the tracked landmarks in order to remove outlier
+candidates and tracked landmarks.  A tracked landmark is considered to
+be an outlier if very few candidate landmarks were matched to its
+prototype.  Typically, we reject a tracked landmark if it has fewer
+than five matched candidates.  Determining whether a particular
+candidate landmark is an outlier (in the context of the tracked
+landmark to which it matched) is less straightforward.  We will tend
+to favour tracked landmarks which are ``well-behaved''.  Ideally, this
+implies that the subspace encodings and image positions of the
+candidates in a tracked landmark behave smoothly as a function of
+camera pose.  Assuming smoothness, however, implies that the best
+method for filtering the candidates is to fit them to a surface,
+which can be extremely problematic in the presence of outliers.
+Instead, we choose to model the distribution of candidates as a normal
+distribution and remove candidates which lie outside a two standard
+deviation envelope in the space defined by the subspace encodings and
+further augmented by the image position.  Furthermore, we will later
+present a method for measuring <em>a priori</em>, the goodness of a
+particular tracked landmark, and which will help reduce any ill
+effects of missing outliers, or mistakenly removing good candidates.
+<P>
+In this Chapter, we developed a method for recognising and tracking
+landmarks over the configuration space.  The results in
+Figure&nbsp;<A HREF="node23.html#lmset">4.3</A> suggest that the method works quite well.
+Chapter&nbsp;<A HREF="node25.html#localize">5</A> will present the central contribution of this
+thesis - a method for estimating camera pose given a set of tracked
+landmarks and the image currently in view.
+<P>
+<HR><A NAME="tex2html415" HREF="node25.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html413" HREF="node21.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html409" HREF="node23.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html417" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html416" HREF="node25.html">Position Estimation</A>
+<B>Up:</B> <A NAME="tex2html414" HREF="node21.html">Visual Tracking</A>
+<B> Previous:</B> <A NAME="tex2html410" HREF="node23.html">Landmark Tracking</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

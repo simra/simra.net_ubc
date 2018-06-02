@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Triangulation Methods</TITLE>
+<META NAME="description" CONTENT="Triangulation Methods">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html283" HREF="node13.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html281" HREF="node11.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html275" HREF="node11.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html285" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html284" HREF="node13.html">Kalman Filtering</A>
+<B>Up:</B> <A NAME="tex2html282" HREF="node11.html">Previous Work</A>
+<B> Previous:</B> <A NAME="tex2html276" HREF="node11.html">Previous Work</A>
+<BR> <P>
+<H1><A NAME="SECTION00710000000000000000">Triangulation Methods</A></H1>
+<P>
+Triangulation methods for robot localisation are based on traditional
+methods in cartography and navigation, which use the angles or
+<em>bearings</em> measured between the lines of sight to known landmarks
+in the environment.  There is a long history of research on these
+methods in the domains of cartography, surveying, photogrammetry and
+computational geometry.  Triangulation approaches in the domain of
+mobile robotics rarely involve real-world implementation, allowing the
+researcher to ignore the problems of landmark detection and
+recognition, which are often issues that are domain- and
+sensor-dependent.
+<P>
+<P><A NAME="111">&#160;</A><A NAME="circles">&#160;</A><A NAME="circlesb">&#160;</A><A NAME="circlesa">&#160;</A><IMG WIDTH=378 HEIGHT=186 ALIGN=BOTTOM ALT="figure105" SRC="img2.gif"><BR>
+<STRONG>Figure 2.1:</STRONG> Pose constraints given
+    bearings to (a) two landmarks, and (b) three landmarks.<BR>
+<P>
+<P>
+It is apparent that given only the angle measured between two
+distinguishable landmarks, the pose of the observer is constrained to
+the arc of a circle, as shown in Figure&nbsp;<A HREF="node12.html#circlesa">2.1(a)</A>.  In the case
+where there are three landmarks, the pose is constrained to a single
+point, lying at the intersection of two circles
+(Figure&nbsp;<A HREF="node12.html#circlesb">2.1(b)</A>), provided that no two landmarks are
+coincident.  When there are four or more landmarks, the system is
+overdetermined, or may have no
+solution&nbsp;[<A HREF="node50.html#sugihara88:location">54</A>, <A HREF="node50.html#Krotkov:89">33</A>]. This result provides a
+basis for several localisation solutions under a variety of
+conditions.  For instance, Sugihara provides a consideration of the
+problem of localisation when the observed landmarks are
+indistinguishable&nbsp;[<A HREF="node50.html#sugihara88:location">54</A>]. That work seeks out a
+computationally efficient method for finding a consistent
+correspondence between detected landmarks and points in a map. This
+correspondence method is improved upon by Avis and Imai&nbsp;[<A HREF="node50.html#avis90">2</A>].
+Both of these works rely heavily on the reliable extraction of
+landmarks from sensor data and the accuracy of the bearing
+measurements - only minor consideration is given to the problem of
+using uncertain bearings.
+<P>
+Sutherland and Thompson approach triangulation methods from the
+perspective that the landmark correspondence problem has been solved,
+but the bearings to observed landmarks cannot be precisely
+known&nbsp;[<A HREF="node50.html#sutherland93">55</A>].  It is shown that informed selection of
+the set of landmarks to be used in the map can help to minimise the
+<em>area of uncertainty</em>, that is, the area in which the robot may
+self-locate for any given error range in visual angle measure.
+Figure&nbsp;<A HREF="node12.html#rings">2.2</A> shows the area of uncertainty computed for a
+bounded error range in the cases of a) two and b) three observed
+landmarks.  Sutherland and Thompson demonstrate that the size of the
+area of uncertainty can vary significantly for different
+configurations of landmarks.  The goal of their work is to select
+landmarks whose configurations minimise the area of uncertainty.
+<P>
+<P><A NAME="128">&#160;</A><A NAME="rings">&#160;</A><A NAME="ringsb">&#160;</A><A NAME="ringsa">&#160;</A><IMG WIDTH=374 HEIGHT=233 ALIGN=BOTTOM ALT="figure122" SRC="img3.gif"><BR>
+<STRONG>Figure 2.2:</STRONG> Pose constraints given
+    uncertain bearings to (a) two landmarks, and (b) three landmarks.<BR>
+<P>
+<P>
+Betke and Gurvits have also considered the problem of localisation
+from uncertain bearings.  They are concerned primarily with the
+efficient computation of a position estimate from an overdetermined
+set of bearings&nbsp;[<A HREF="node50.html#Betke1997">8</A>].  They derive a complex-domain
+representation of the positions of the landmarks that linearises the
+relationship between the constraining equations and allows the system
+to be solved in time linear in the number of landmarks, provided that
+certain constraints on the formation of the landmarks are met.
+<P>
+All of the triangulation methods considered here make a strict set of
+assumptions about the environment and the robot.  In every case, the
+robot is provided with an accurate <em>a priori</em> map of the
+positions of known landmarks, and in some cases assumes the ability to
+uniquely distinguish between the observed landmarks. In addition, the
+robot can always reliably detect landmarks in the sensor data.  An
+important aspect of these solutions is the observation that sensor
+measurements are not always accurate, and hence it is most reasonable
+to seek out a solution which minimises the uncertainty of the position
+estimate.
+<P>
+<HR><A NAME="tex2html283" HREF="node13.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html281" HREF="node11.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html275" HREF="node11.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html285" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html284" HREF="node13.html">Kalman Filtering</A>
+<B>Up:</B> <A NAME="tex2html282" HREF="node11.html">Previous Work</A>
+<B> Previous:</B> <A NAME="tex2html276" HREF="node11.html">Previous Work</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

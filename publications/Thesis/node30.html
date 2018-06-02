@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Experimental Results</TITLE>
+<META NAME="description" CONTENT="Experimental Results">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html483" HREF="node31.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html481" HREF="foe.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html475" HREF="node29.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html485" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html484" HREF="node31.html">A Simple Scene</A>
+<B>Up:</B> <A NAME="tex2html482" HREF="foe.html">Mobile Robot Localisation Using </A>
+<B> Previous:</B> <A NAME="tex2html476" HREF="node29.html">Removing Outliers</A>
+<BR> <P>
+<H1><A NAME="SECTION001100000000000000000">Experimental Results</A></H1>
+<P>
+<A NAME="experiment">&#160;</A>
+<P>
+This chapter presents experimental results that demonstrate the
+feasibility of the method.  Each experiment will consider separate
+aspects of the implementation, including the effects of parameter
+variation, lighting variation, and environment scale.  Results from
+different environments will also be presented.  Finally, we will
+briefly consider a method for recovering camera orientation even when
+training is performed at a fixed orientation.
+<P>
+An issue that is of importance is that of how we measure the accuracy
+of the localisation method.  In practice, the goodness of the results
+will be tied to the sampling density used for training and hence we
+express the accuracy of experimental results as a percentage of the
+sample spacing <IMG WIDTH=8 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4758" SRC="img95.gif">, measured as the average distance between
+nearest neighbours in the set of poses used for training.  We are
+striving for results that are accurate to a fraction of <IMG WIDTH=8 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4758" SRC="img95.gif">.  A
+second issue is the difficulty of measuring sufficiently accurate
+ground truth in some experiments.  This has a particularly important
+impact on the images obtained for training, since it may not always be
+possible to ensure that the camera is facing in a fixed orientation or
+that the position of the camera is precise. Indeed, the quality of the
+results will hinge to some extent on the precision of the training
+poses. In our discussion of each experiment, we will consider the
+precision to which we can measure ground truth and compare the results
+to this measure.  Finally, there are some implementation details which
+should be noted.  Unless otherwise stated, all the images used for
+training and testing are grey scale, at a resolution of 320 by 240
+pixels. The window used for measuring edge density is 15 pixels in
+radius, and the local maxima of edge density are considered only if
+they differ from the mean edge density by more than one standard
+deviation.  In the tracking phase, better matches to tracked landmarks
+are sought out over a 20 by 20 pixel neighbourhood of the candidate
+under consideration.
+<P>
+<BR> <HR>
+<UL><A NAME="CHILD_LINKS">&#160;</A>
+<LI> <A NAME="tex2html486" HREF="node31.html#SECTION001110000000000000000">A Simple Scene</A>
+<LI> <A NAME="tex2html487" HREF="node32.html#SECTION001120000000000000000">Parameter Variation</A>
+<UL>
+<LI> <A NAME="tex2html488" HREF="node33.html#SECTION001121000000000000000">Appearance-only Pose Estimates</A>
+<LI> <A NAME="tex2html489" HREF="node34.html#SECTION001122000000000000000">Using the Edge Distribution</A>
+</UL> 
+<LI> <A NAME="tex2html490" HREF="node35.html#SECTION001130000000000000000">A Larger Scene</A>
+<LI> <A NAME="tex2html491" HREF="node36.html#SECTION001140000000000000000">Two Indoor Scenes</A>
+<UL>
+<LI> <A NAME="tex2html492" HREF="node37.html#SECTION001141000000000000000">A Laboratory Environment</A>
+<LI> <A NAME="tex2html493" HREF="node38.html#SECTION001142000000000000000">Laboratory Environment Revisited</A>
+</UL> 
+<LI> <A NAME="tex2html494" HREF="node39.html#SECTION001150000000000000000">Recovering Orientation</A>
+</UL>
+<HR><A NAME="tex2html483" HREF="node31.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html481" HREF="foe.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html475" HREF="node29.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html485" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html484" HREF="node31.html">A Simple Scene</A>
+<B>Up:</B> <A NAME="tex2html482" HREF="foe.html">Mobile Robot Localisation Using </A>
+<B> Previous:</B> <A NAME="tex2html476" HREF="node29.html">Removing Outliers</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

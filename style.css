@@ -1,0 +1,226 @@
+body {
+	font-family: Verdana, sans-serif; 
+	font-size: 12px;
+/*	font-family : "Verdana", "Arial", "Helvetica";*/
+	background: #FFFFFF;    
+	color:      #000000;
+	width: 80%;
+	margin-left: 10%; 
+	margin-top: 20px;
+	padding: 0; 
+	border: none;
+	display: block;
+}
+
+A:link      { color: #0000CC; background: #FFFFFF;} 
+A:visited   { color: #0000CC; background: #FFFFFF;} 
+#A:active   { color: #99CC66; background: #FFFFFF; } 
+A:hover     { color: #664400; background: #FFFFFF; } 
+
+rightcolumn img { border: 0;}
+
+h1, h2, h3, h4 {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana,sans-serif;
+/*	FONT : "Verdana", "Arial", "Helvetica"	;*/
+}
+
+h1 {
+/*    font-size: 125%;*/
+	font-size: 18px;
+}
+
+h2 {
+	font-size: 16px;
+}
+
+h3 {
+	font-size: 14px; 
+    padding-top: 5px;	
+    padding-right: 5px;	
+    padding-bottom: 5px;	
+}
+
+.section {
+	margin-top: 10px;
+	display: block;
+}
+
+.project img {
+	position: relative;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.project a {
+	background: #DDDDDD;
+}
+
+.project {
+	clear: right;
+	border: 1px dashed;
+	background: #DDDDDD;
+	margin: 20px;
+	padding: 5px;
+}
+
+
+.header {
+	border-bottom: 2px solid #000000; 
+	font-family: Verdana,sans-serif;
+/*	FONT-family : "Verdana", "Arial", "Helvetica";*/
+	margin: 10px;  
+	padding-bottom: 30px;
+	display: block;
+}
+
+.lefthead {
+	float:	left;
+}
+
+.righthead {
+	float:	right;
+}
+
+.core {
+	margin: 10px;
+	border: none;
+	display: block;
+	position: relative;
+	top: 0;
+	left: 0;
+	min-width: 700px;
+}
+
+.headlines {
+	margin-left: 201px;
+	margin-right: 191px; 
+	padding: 0px 20px 0px 20px;
+}
+
+.leftcolumn {
+/*	font-family: georgia,times,serif;*/
+	font-family: Verdana, sans-serif;
+/*	FONT-family: "Verdana", "Arial", "Helvetica";*/
+	width: 200px;
+	float: left;
+} 
+
+
+.rightcolumn {
+	float: right;	
+	width: 170px;
+	top: 0;
+	text-align: right;
+}
+
+.researchlist {
+	margin-top: 0px;
+	margin-left: 20px; 
+	padding-left: 0px; 
+	font-family: Verdana, sans-serif;
+/*	font-family: georgia,times,serif;*/
+/*	FONT-family:  "Verdana", "Arial", "Helvetica"	;*/
+} 
+
+
+
+.diarytable {
+	display: block;
+}
+
+.diaryentry {
+        text-align: left;
+        display: block;
+        position: relative;
+        left: 0;
+        top: 0;
+	margin-left: auto;
+	margin-right: auto;
+	min-width: 320px;
+}        
+
+.diaryheader {
+        border: 2px solid #000000;
+/*        font-family: arial,sans-serif;*/
+	font-family: Verdana, sans-serif;
+/*	FONT-family : "Verdana", "Arial", "Helvetica";*/
+        color: #000000;
+        background: #d6d5cb;
+        padding: 5px;
+        display: block;
+	position: relative;
+	left: 0;
+        top: 0;
+	min-width: 320px;
+}   
+
+
+.diarysubject {
+        color: #000000;
+        background: #d6d5cb; 
+        text-align: left;
+/*        font-size: 90%; */
+        font-weight: bold;
+/*	width: 200px;*/
+}
+
+.diarydate {
+        background: #d6d5cb;
+        color: #000000; 
+/*        font-size: 50%; */
+/*        text-align: right;*/
+/*	float: right;*/
+/*	position: relative;*/
+/*	position: absolute;
+	top: 6px; 
+	right: 7px;*/
+/*	min-width: 100px;*/
+}
+
+.diarybody {
+	font-family: Verdana, sans-serif;
+/*        font-family: georgia,times,serif;*/
+/*	FONT-FAMILY : "Verdana", "Arial", "Helvetica"	;*/
+        text-align: justify;
+        padding: 5px;
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+	margin-bottom: 10px;
+}                                
+
+
+.footer {
+	text-align: center;
+	font-family: Verdana, sans-serif;
+/*	font-family: arial,sans-serif;*/
+/*	FONT-family : "Verdana", "Arial", "Helvetica";*/
+/*	font-size: 75%;*/
+	position: relative;
+	bottom: 0px;
+}
+
+.pubsection {
+	border: 1px solid #000000;
+	margin: 5px;
+	padding: 5px;
+}
+
+.pubentry {
+	padding: 10px;
+}
+
+.searchform {
+	padding: 10px;
+	text-align: center;
+}
+
+.loginform {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	display: block;
+}
+

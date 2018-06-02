@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Overview</TITLE>
+<META NAME="description" CONTENT="Overview">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html620" HREF="node42.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html618" HREF="node40.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html612" HREF="node40.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html622" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html621" HREF="node42.html">Landmarks</A>
+<B>Up:</B> <A NAME="tex2html619" HREF="node40.html">Discussion and Conclusions</A>
+<B> Previous:</B> <A NAME="tex2html613" HREF="node40.html">Discussion and Conclusions</A>
+<BR> <P>
+<H1><A NAME="SECTION001210000000000000000">Overview</A></H1>
+<P>
+This thesis presented a method for estimating the position of a mobile
+robot, without an <em>a priori</em> estimate.  This is accomplished by
+learning a set of visual features, known as <em>landmarks</em>,
+candidates for which are detected as local maxima of a measure of
+distinctiveness.  Specifically, edge density is employed as the
+measure of distinctiveness.  Landmark candidates are then grouped into
+<em>tracked landmarks</em>: sets of candidates which correspond to the
+same visual region of the environment, as observed from different
+viewpoints.  Grouping is achieved by matching subspace encodings of
+the candidates, perhaps with adjustments in position in the image in
+order to improve matching.  Online position estimation is performed by
+detecting candidates and matching them to the tracked landmarks.  Each
+match is used to generate a pose estimate by employing a principal
+components reconstruction of a feature vector which encodes both
+appearance and image geometry.  The experimental results indicate that
+the method is robust for a variety of environments and
+parameterisations and shows promise for a range of applications.
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

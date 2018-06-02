@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Landmark Recognition</TITLE>
+<META NAME="description" CONTENT="Landmark Recognition">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html395" HREF="node23.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html393" HREF="node21.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html387" HREF="node21.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html397" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html396" HREF="node23.html">Landmark Tracking</A>
+<B>Up:</B> <A NAME="tex2html394" HREF="node21.html">Visual Tracking</A>
+<B> Previous:</B> <A NAME="tex2html388" HREF="node21.html">Visual Tracking</A>
+<BR> <P>
+<H1><A NAME="SECTION00910000000000000000">Landmark Recognition</A></H1>
+<P>
+As we have already stated, we can exploit the image intensity
+distribution in the neighbourhood of a candidate landmark in order to
+achieve recognition of a previously observed prototype.  To this end,
+we represent the appearance of landmarks (both candidates and
+prototypes) using a technique known as principal components analysis
+(PCA)&nbsp;[<A HREF="node50.html#Turk1989">60</A>, <A HREF="node50.html#nayar94">44</A>, <A HREF="node50.html#Pentland1994">48</A>].  Image recognition using
+PCA operates by projecting the image to be classified into a subspace
+which ``best'' distinguishes the classes (or prototypes) to be
+identified. The optimality of this representation is based on an
+assumption that the reconstruction of the image is a linear
+combination of a set of descriptive vectors.  While variants of the
+method employ a wide variety of classification schemes, we choose the
+class having the smallest Euclidean distance in the subspace to the
+target as a match.
+<P>
+PCA operates by first constructing a linear subspace from a set of
+exemplars.  In the domain of face or object recognition, the exemplars
+might be a set of canonical views of the faces or objects to be
+distinguished.  Each exemplar is expressed as a vector, <IMG WIDTH=11 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4306" SRC="img20.gif">,
+and the set of these vectors is assembled into a matrix, <IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4308" SRC="img21.gif">.
+The eigenvectors of <IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4308" SRC="img21.gif"> are computed using singular
+values decomposition, producing an orthonormal basis set<A NAME="tex2html11" HREF="footnode.html#535"><IMG  ALIGN=BOTTOM ALT="gif" SRC="icons/foot_motif.gif"></A>.  Since
+each vector in this basis set is of the same dimensionality as the
+input prototypes and, as such, can be represented as images, they are
+sometimes referred to in the literature as eigenpictures or
+<em>eigenfaces</em>&nbsp;[<A HREF="node50.html#Turk1989">60</A>].
+<P>
+More formally, and expressed in the context of landmark recognition,
+consider a set <I>T</I> of <I>m</I> landmark prototypes <IMG WIDTH=83 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline4320" SRC="img23.gif">.
+Each of these prototypes is an instance of a landmark candidate - that
+is, each prototype has been detected using the attention operator
+outlined in Chapter&nbsp;<A HREF="node17.html#landmarks">3</A>, and therefore each prototype has
+an associated local intensity map; typically, we select the local
+intensity map to be of the same scale as the attention operator that
+was used to detect the landmark.  For each prototype <IMG WIDTH=11 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline4322" SRC="img24.gif">, we build a
+column vector, <IMG WIDTH=15 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4324" SRC="img25.gif"> by scanning the local intensity
+distribution in row-wise order and normalising the magnitude of
+<IMG WIDTH=15 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4324" SRC="img25.gif"> to one.  Note that if the local intensity image
+consists of <I>s</I> by <I>t</I> pixels, then it follows that <IMG WIDTH=15 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4324" SRC="img25.gif"> is
+of dimensionality <I>n</I>=<I>st</I>.  Our goal is to construct a discriminator
+using the set of vectors defined by <I>T</I>.  This is accomplished by
+constructing an <IMG WIDTH=51 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4338" SRC="img26.gif"> matrix <IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4308" SRC="img21.gif"> whose columns consist
+of the vectors <IMG WIDTH=15 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4324" SRC="img25.gif">, and expressing <IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4308" SRC="img21.gif"> in terms of
+its singular values decomposition,
+<BR><IMG WIDTH=500 HEIGHT=58 ALIGN=BOTTOM ALT="equation354" SRC="img27.gif"><BR>
+where <IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4346" SRC="img28.gif"> is an <IMG WIDTH=51 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4338" SRC="img26.gif"> column-orthogonal matrix whose
+columns represent the principal directions of the range defined by
+<IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4308" SRC="img21.gif"> (that is, <IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4346" SRC="img28.gif"> gives the eigenvectors of
+<IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4308" SRC="img21.gif">), <IMG WIDTH=22 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4356" SRC="img29.gif"> is an <IMG WIDTH=56 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4358" SRC="img30.gif"> diagonal matrix, whose
+elements correspond to the singular values (or eigenvalues) of
+<IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4308" SRC="img21.gif"> and <IMG WIDTH=16 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4362" SRC="img31.gif"> is an <IMG WIDTH=56 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4358" SRC="img30.gif"> column-orthogonal
+matrix whose rows represent the projections of the columns of
+<IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4308" SRC="img21.gif"> into the subspace defined by <IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4346" SRC="img28.gif"> (weighted
+appropriately by the inverses of the eigenvalues).  Note that the
+columns of <IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4346" SRC="img28.gif"> define a linear subspace of dimensionality
+<I>m</I>, which can be<A NAME="tex2html12" HREF="footnode.html#511"><IMG  ALIGN=BOTTOM ALT="gif" SRC="icons/foot_motif.gif"></A> much
+smaller than <I>n</I>.  In addition, the principal axes of the subspace are
+arranged so as to maximise the Euclidean distance between the
+projections of the prototypes <IMG WIDTH=11 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline4322" SRC="img24.gif"> into the subspace, which optimises
+the discriminability of the prototypes.  As we have already mentioned,
+the columns of <IMG WIDTH=15 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4346" SRC="img28.gif"> are of dimensionality <I>n</I>, and hence can
+be represented as images.  Figure&nbsp;<A HREF="node22.html#eigenpictures">4.2</A> shows a set of
+landmark prototypes on the left, and the corresponding eigenvectors,
+or <em>eigenlandmarks</em> constructed from the prototypes on the right.
+<P>
+<P><A NAME="388">&#160;</A><A NAME="eigenpictures">&#160;</A><A NAME="eigenpicturesb">&#160;</A><A NAME="eigenpicturesa">&#160;</A><IMG WIDTH=636 HEIGHT=150 ALIGN=BOTTOM ALT="figure382" SRC="img32.gif"><BR>
+<STRONG>Figure 4.2:</STRONG> (a) Landmark Prototypes and (b) Eigenlandmarks.<BR>
+<P>
+<P>
+Once the subspace is constructed, it can be used for classifying
+landmark candidates.  Given a landmark candidate <I>c</I>, we construct a
+vector <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> from the local intensity distribution of <I>c</I>,
+normalised to unit magnitude<A NAME="tex2html13" HREF="footnode.html#392"><IMG  ALIGN=BOTTOM ALT="gif" SRC="icons/foot_motif.gif"></A>.  The subspace projection <IMG WIDTH=13 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4392" SRC="img34.gif"> of
+<IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif"> is obtained using
+<BR><A NAME="project">&#160;</A><IMG WIDTH=500 HEIGHT=22 ALIGN=BOTTOM ALT="equation395" SRC="img35.gif"><BR>
+and then <I>c</I> can be matched to the prototype <IMG WIDTH=7 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap_inline4398" SRC="img36.gif"> whose
+subspace projection is closest (in the
+Euclidean sense) to <IMG WIDTH=13 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4392" SRC="img34.gif"> in the subspace.  If the subspace
+projection of prototype <IMG WIDTH=11 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline4322" SRC="img24.gif">
+is defined using the Euclidean metric,   
+<BR><A NAME="project2">&#160;</A><IMG WIDTH=500 HEIGHT=22 ALIGN=BOTTOM ALT="equation403" SRC="img37.gif"><BR>
+where <IMG WIDTH=13 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline4404" SRC="img38.gif"> is obtained from the prototype image in the same
+fashion as was used to obtain <IMG WIDTH=8 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline4388" SRC="img33.gif">, then the optimal match
+<IMG WIDTH=7 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap_inline4398" SRC="img36.gif"> is defined as
+<BR><IMG WIDTH=500 HEIGHT=28 ALIGN=BOTTOM ALT="equation412" SRC="img39.gif"><BR>
+<P>
+The following section will demonstrate how this classification
+mechanism can be used to track landmarks over a set of viewpoints.
+<P>
+<HR><A NAME="tex2html395" HREF="node23.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html393" HREF="node21.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html387" HREF="node21.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html397" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html396" HREF="node23.html">Landmark Tracking</A>
+<B>Up:</B> <A NAME="tex2html394" HREF="node21.html">Visual Tracking</A>
+<B> Previous:</B> <A NAME="tex2html388" HREF="node21.html">Visual Tracking</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

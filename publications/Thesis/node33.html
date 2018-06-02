@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Appearance-only Pose Estimates</TITLE>
+<META NAME="description" CONTENT="Appearance-only Pose Estimates">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html527" HREF="node34.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html525" HREF="node32.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html519" HREF="node32.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html529" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html528" HREF="node34.html">Using the Edge Distribution</A>
+<B>Up:</B> <A NAME="tex2html526" HREF="node32.html">Parameter Variation</A>
+<B> Previous:</B> <A NAME="tex2html520" HREF="node32.html">Parameter Variation</A>
+<BR> <P>
+<H2><A NAME="SECTION001121000000000000000">Appearance-only Pose Estimates</A></H2>
+<P>
+There may be occasions when the image position of candidate landmarks
+cannot be considered useful for positioning. For example, rolling
+terrain or other factors may make it 
+impossible to constrain the pose of the camera in a consistent
+orientation.   In these cases, one might wish to reduce <IMG WIDTH=10 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4822" SRC="img101.gif"> to zero.
+Figure&nbsp;<A HREF="node33.html#scenenopos">6.5</A> demonstrates the accuracy of position
+estimation when the image-position parameter, <IMG WIDTH=10 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4822" SRC="img101.gif"> is set to zero,
+as the camera scale parameter, <IMG WIDTH=11 HEIGHT=8 ALIGN=BOTTOM ALT="tex2html_wrap_inline4820" SRC="img100.gif"> is varied.  The figure
+effectively plots the surface depicted in Figure&nbsp;<A HREF="node32.html#paramvar">6.4</A> in the
+limit as <IMG WIDTH=10 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline4822" SRC="img101.gif"> approaches 0.  As the plot indicates,
+purely appearance-based pose estimation is very effective for a wide
+range of parameterisations.
+<P>
+<P><A NAME="939">&#160;</A><A NAME="scenenopos">&#160;</A><IMG WIDTH=369 HEIGHT=310 ALIGN=BOTTOM ALT="figure937" SRC="img110.gif"><BR>
+<STRONG>Figure 6.5:</STRONG> Appearance-based estimation error for Scene I.  The plot depicts
+the mean estimation error as a function of <IMG WIDTH=11 HEIGHT=8 ALIGN=BOTTOM ALT="tex2html_wrap_inline4820" SRC="img100.gif">, the camera scale
+parameter when <IMG WIDTH=44 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4862" SRC="img109.gif">.<BR>
+<P>
+<P>
+For a more specific look at how well the method performs when <IMG WIDTH=44 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4862" SRC="img109.gif">,
+Figure&nbsp;<A HREF="node33.html#scenenoposplot">6.6</A> plots the set of twenty test cases for
+<IMG WIDTH=79 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap_inline4866" SRC="img111.gif">. The mean estimation error is 0.17cm.
+<P>
+<P><A NAME="1089">&#160;</A><A NAME="scenenoposplot">&#160;</A><IMG WIDTH=342 HEIGHT=355 ALIGN=BOTTOM ALT="figure944" SRC="img112.gif"><BR>
+<STRONG>Figure 6.6:</STRONG> Appearance-based estimation results for Scene I.  The plot depicts
+the set of pose estimates for the twenty test cases in Scene I with
+<IMG WIDTH=79 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap_inline4866" SRC="img111.gif"> and <IMG WIDTH=44 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4862" SRC="img109.gif">. The mean estimation error is 0.17cm.<BR>
+<P><BR> <HR>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Laboratory Environment Revisited</TITLE>
+<META NAME="description" CONTENT="Laboratory Environment Revisited">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html580" HREF="node39.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html578" HREF="node36.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html574" HREF="node37.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html582" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html581" HREF="node39.html">Recovering Orientation</A>
+<B>Up:</B> <A NAME="tex2html579" HREF="node36.html">Two Indoor Scenes</A>
+<B> Previous:</B> <A NAME="tex2html575" HREF="node37.html">A Laboratory Environment</A>
+<BR> <P>
+<H2><A NAME="SECTION001142000000000000000">Laboratory Environment Revisited</A></H2>
+<P>
+<P><A NAME="1017">&#160;</A><A NAME="sceneIV">&#160;</A><IMG WIDTH=301 HEIGHT=227 ALIGN=BOTTOM ALT="figure1015" SRC="img125.gif"><BR>
+<STRONG>Figure 6.15:</STRONG> Scene IV.<BR>
+<P>
+<P>
+Given many of the difficulties posed by estimating ground truth in
+Scene III, a second experiment was conducted aimed at improving the
+accuracy of ground truth.  Scene IV is depicted in
+Figure&nbsp;<A HREF="node38.html#sceneIV">6.15</A>. In this scene, a camera was mounted on an RWI
+B-12 mobile robot (Figure&nbsp;<A HREF="node38.html#b12">6.16</A>). In addition, a laser was
+mounted on the back of the robot, equipped with a lens that split the
+beam into a straight line, aligned perpendicular to the image-plane of
+the camera.  The mounted laser was used to obtain ground truth by
+accurately positioning the
+robot within 0.5cm of the desired pose, and oriented to within
+<IMG WIDTH=31 HEIGHT=16 ALIGN=BOTTOM ALT="tex2html_wrap_inline4942" SRC="img126.gif">. Training images 
+were taken at <IMG WIDTH=66 HEIGHT=15 ALIGN=BOTTOM ALT="tex2html_wrap_inline4944" SRC="img127.gif">cm intervals over a 2.0m by 2.0m grid.
+Despite the improved dead reckoning, the unevenness of the floor led
+to some variation in image alignment.
+<P>
+<P><A NAME="1025">&#160;</A><A NAME="b12">&#160;</A><IMG WIDTH=240 HEIGHT=181 ALIGN=BOTTOM ALT="figure1023" SRC="img128.gif"><BR>
+<STRONG>Figure 6.16:</STRONG> The RWI with mounted camera.<BR>
+<P>
+<P>
+Once training images were collected, a series of 30 test images were
+taken from random positions in order to test the method.
+Figure&nbsp;<A HREF="node38.html#labneedle">6.17</A> presents the set of estimates obtained from
+the method, plotted against their ground-truth. The mean error in
+position is 6.3cm or 31% of <IMG WIDTH=8 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4758" SRC="img95.gif">.
+<P>
+<P><A NAME="1031">&#160;</A><A NAME="labneedle">&#160;</A><IMG WIDTH=356 HEIGHT=356 ALIGN=BOTTOM ALT="figure1029" SRC="img129.gif"><BR>
+<STRONG>Figure 6.17:</STRONG> The set of
+pose estimates obtained for Scene IV. The mean estimation error is 6.3cm.<BR>
+<P>
+<P>
+In order to test the claim that the method is robust under changes in
+the environment, five more test images were taken of the scene, with
+one of the foreground chairs moved back against the wall
+(Figure&nbsp;<A HREF="node38.html#chairmoved">6.18</A>).
+<P>
+<P><A NAME="1037">&#160;</A><A NAME="chairmoved">&#160;</A><IMG WIDTH=301 HEIGHT=227 ALIGN=BOTTOM ALT="figure1035" SRC="img130.gif"><BR>
+<STRONG>Figure 6.18:</STRONG> Altered Scene IV<BR>
+<P>
+<P>
+Figure&nbsp;<A HREF="node38.html#dynamicneedle">6.19</A> depicts the set of results obtained for
+the five test images.  The mean error is 9.4cm.  Clearly, the method
+works very well in the face of a change which would wreak havoc with
+many existing localisation solutions.
+<P>
+<P><A NAME="1043">&#160;</A><A NAME="dynamicneedle">&#160;</A><IMG WIDTH=356 HEIGHT=356 ALIGN=BOTTOM ALT="figure1041" SRC="img131.gif"><BR>
+<STRONG>Figure 6.19:</STRONG> Results from altered Scene
+IV. The mean estimation error is 9.4cm.<BR>
+<P><HR><A NAME="tex2html580" HREF="node39.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html578" HREF="node36.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html574" HREF="node37.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html582" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html581" HREF="node39.html">Recovering Orientation</A>
+<B>Up:</B> <A NAME="tex2html579" HREF="node36.html">Two Indoor Scenes</A>
+<B> Previous:</B> <A NAME="tex2html575" HREF="node37.html">A Laboratory Environment</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Approach</TITLE>
+<META NAME="description" CONTENT="Approach">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html236" HREF="node9.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html234" HREF="node6.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html228" HREF="node7.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html238" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html237" HREF="node9.html">Applications</A>
+<B>Up:</B> <A NAME="tex2html235" HREF="node6.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html229" HREF="node7.html">Problem Statement</A>
+<BR> <P>
+<H1><A NAME="SECTION00620000000000000000">Approach</A></H1>
+<P>
+Our approach to the problem at hand uses visual features, referred to
+as <em>landmarks</em>, to perform position estimation, extracting these
+landmarks from a preliminary traversal of the environment (i.e. an
+off-line mapping and pre-computation phase).  In this work, landmarks
+are <em>image-domain</em> features, as opposed to interpreted
+characteristics of the scene.  <em>Candidate landmark</em> selection is
+based on a local distinctiveness criterion; this is later validated by
+verifying the appearance of the candidate landmarks against a set of
+landmark templates.    The method consists of an off-line ``mapping'' phase and on-line
+``localisation'' phase.  The off-line phase is performed once, upon
+initial exploration of the environment, and consists of learning a set
+of <em>tracked landmarks</em> considered useful for position estimation.
+The on-line phase is performed as often as a position estimate is
+required, and consists of matching candidate landmarks in the input
+image to the learned tracked landmarks, followed by position
+estimation using an appearance-based linear combination of views. An
+outline of the method is as follows.
+<P>
+<UL>
+<LI> Off-line ``Map'' construction:
+    <OL>
+<LI> Training images are collected sampling a range of poses in
+      the environment.
+<LI> <em>Landmark candidates</em> are extracted from each image using
+      a model of visual attention.
+<LI> <em>Tracked Landmarks</em> are extracted as sets of candidate
+landmarks over the configuration space (the vector space of possible
+configurations, or poses, of the robot).  Tracked
+      landmarks are each represented by a characteristic prototype,
+      obtained by encoding an initial set of candidate landmarks by
+      their principal components decomposition.  For each image, a
+      local search is performed in the neighbourhood of the candidate
+      landmarks in the image in order to locate optimal matches to the
+      templates.
+<LI> The set of tracked landmarks is stored for future retrieval.
+    </OL>
+<LI> On-line localisation.
+    <OL>
+<LI> When a position estimate is required, a single image is
+    acquired from the camera.
+<LI> Candidate landmarks are extracted from the input image using
+    the same model of visual attention used in the off-line phase.
+<LI> The candidate landmarks are matched to the learned
+    templates using the same method used for tracking in the off-line
+    phase.
+<LI> A position estimate is obtained for <em>each</em> matched candidate
+    landmark.  This is achieved by computing a
+    reconstruction of the candidate based on the decomposition of the
+    tracked candidates and their known poses in the tracked landmark. The
+    result is a position estimate obtained as a linear combination of
+    the positions of the views of the tracked candidates in the tracked landmarks.
+<LI> A final position estimate is computed as the robust average
+    of the individual estimates of the individual tracked candidates.
+    </OL></UL>
+<P>
+Figure&nbsp;<A HREF="node8.html#overview">1.1</A> depicts the method pictorially.
+Figure&nbsp;<A HREF="node8.html#offline">1.1(a)</A> provides an outline for the off-line procedure
+from image acquisition, to tracking candidate landmarks.
+Figure&nbsp;<A HREF="node8.html#online">1.1(b)</A> depicts the online procedure, from image
+acquisition, candidate landmark extraction, matching, obtaining
+independent position estimates and finally to merging.
+<P>
+<P><A NAME="83">&#160;</A><A NAME="overview">&#160;</A><A NAME="online">&#160;</A><A NAME="offline">&#160;</A><IMG WIDTH=420 HEIGHT=841 ALIGN=BOTTOM ALT="figure78" SRC="img1.gif"><BR>
+<STRONG>Figure 1.1:</STRONG> An overview of the method.<BR>
+<P>
+<P>
+In practice we use a
+statistical measure of local image content for candidate landmark
+extraction. Good candidates for a statistical measure include saliency
+measures such as edge density, or local symmetry, or the output of a
+matched filter.  Such a measure has strong local structure in the
+sense that the output tends to vary smoothly under local changes in
+camera pose. The objective of this definition is to produce observed
+landmarks which are reasonably stable and repeatable image features,
+distinctive in appearance and containing a rich body of information
+concerning the structure of the image as a whole.
+<P>
+With a suitable measuring function, we can efficiently obtain a large
+number of stable, distinctive and generic candidate landmarks from most
+environments.  The only requirement on the environment is that it is
+rich enough in terms of its response to the measuring function.
+This requirement is reasonable in the sense that image-based
+localisation will always require that the environment have some
+visual structure.
+<P>
+<HR><A NAME="tex2html236" HREF="node9.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html234" HREF="node6.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html228" HREF="node7.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html238" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html237" HREF="node9.html">Applications</A>
+<B>Up:</B> <A NAME="tex2html235" HREF="node6.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html229" HREF="node7.html">Problem Statement</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

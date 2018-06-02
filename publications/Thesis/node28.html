@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Estimating Error</TITLE>
+<META NAME="description" CONTENT="Estimating Error">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html463" HREF="node29.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html461" HREF="node27.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html455" HREF="node27.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html465" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html464" HREF="node29.html">Removing Outliers</A>
+<B>Up:</B> <A NAME="tex2html462" HREF="node27.html">Robust Estimate Combination</A>
+<B> Previous:</B> <A NAME="tex2html456" HREF="node27.html">Robust Estimate Combination</A>
+<BR> <P>
+<H2><A NAME="SECTION001021000000000000000">Estimating Error</A></H2>
+<P>
+We are seeking in this section a method for combining individual
+estimates obtained from different tracked landmarks.  This can be
+accomplished using the merging operation defined above if we can
+obtain an error model for estimates obtained from each tracked
+landmark.  An error model for a particular tracked landmark <I>T</I> can be
+constructed using <em>cross-validation</em>.  That is, we measure how
+well each observed candidate landmark in <I>T</I> is predicted by the rest
+of the candidate landmarks in <I>T</I>.  This is a quantity which is fixed
+for a given tracked landmark, and hence can be computed <em>a
+priori</em>.  More formally, for each landmark candidate <IMG WIDTH=9 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4444" SRC="img41.gif"> which is a
+member of a tracked landmark <IMG WIDTH=154 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline4522" SRC="img60.gif">, we remove
+<IMG WIDTH=9 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4444" SRC="img41.gif"> from <I>T</I> to obtain <I>T</I>' and use <I>T</I>' to estimate the camera
+position <IMG WIDTH=27 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline4716" SRC="img88.gif"> of <IMG WIDTH=9 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4444" SRC="img41.gif">, using the position estimation
+method described in Section&nbsp;<A HREF="node26.html#elc">1</A> of this chapter. The error model
+<I>E</I> for <I>T</I> is then described as an AT with two components,
+<IMG WIDTH=16 HEIGHT=18 ALIGN=BOTTOM ALT="tex2html_wrap_inline4654" SRC="img75.gif"> being the the average displacement of <IMG WIDTH=27 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline4716" SRC="img88.gif">
+from the true position <IMG WIDTH=33 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline4728" SRC="img89.gif"> for all <IMG WIDTH=9 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4444" SRC="img41.gif"> of <I>T</I>, and
+<IMG WIDTH=13 HEIGHT=13 ALIGN=BOTTOM ALT="tex2html_wrap_inline4656" SRC="img76.gif"> being the total covariance of the same displacements,
+<BR><IMG WIDTH=500 HEIGHT=23 ALIGN=BOTTOM ALT="equation747" SRC="img90.gif"><BR>
+where 
+<BR><IMG WIDTH=541 HEIGHT=117 ALIGN=BOTTOM ALT="eqnarray751" SRC="img91.gif"><BR>
+where <I>m</I> is the number of candidate landmarks in the tracked landmark.
+<P>
+Note that while the merging operation defined previously for combining
+noisy estimates assumed zero mean error, it is possible for
+<IMG WIDTH=16 HEIGHT=18 ALIGN=BOTTOM ALT="tex2html_wrap_inline4654" SRC="img75.gif"> to be non-zero; a tracked landmark may, for whatever
+reason, contain systematic error.  In order to maintain our assumption
+that the mean error is zero, we subtract this estimated systematic
+error from the position estimates prior to merging.
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

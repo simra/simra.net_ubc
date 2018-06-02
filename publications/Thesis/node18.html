@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Edge Detection</TITLE>
+<META NAME="description" CONTENT="Edge Detection">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html350" HREF="node19.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html348" HREF="node17.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html342" HREF="node17.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html352" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html351" HREF="node19.html">Feature Interpretation</A>
+<B>Up:</B> <A NAME="tex2html349" HREF="node17.html">Learning Landmarks</A>
+<B> Previous:</B> <A NAME="tex2html343" HREF="node17.html">Learning Landmarks</A>
+<BR> <P>
+<H1><A NAME="SECTION00810000000000000000">Edge Detection</A></H1>
+<P>
+Before we begin our consideration of landmark extraction, let us first
+consider the problem of edge detection. It has been shown that much of
+the essential information about a scene is contained in the edge map of
+the image&nbsp;[<A HREF="node50.html#attneave:vispercept">1</A>], and that edge structures have an
+apparent relevance in biological vision systems&nbsp;[<A HREF="node50.html#marr81:vision">41</A>].
+In addition, the edge information in an image tends to be robust
+under changes in illumination or related camera parameters. For these
+reasons, edge structure has been used extensively in computational
+vision.
+<P>
+There are a variety of edge detectors available to researchers. Longi
+provides a succinct review of the more significant
+approaches&nbsp;[<A HREF="node50.html#lonji96:_mobil">38</A>].  For example, Marr and Hildreth
+convolve a mask over the image and label zero-crossings of the
+convolution output as edge points&nbsp;[<A HREF="node50.html#marr:edgedetect">42</A>].  Gregson
+uses a combination of contrast thresholding and an analysis of
+direction dispersion to find edges&nbsp;[<A HREF="node50.html#gregson:angular">23</A>]. Baker and
+Binford, and Ohta and Kanade label peaks in the magnitude of the first
+derivative of the intensity profile along a scan-line as feature
+points for matching&nbsp;[<A HREF="node50.html#baker:depth">4</A>, <A HREF="node50.html#ohta:scanline">46</A>]. The Haralick
+edge operator employs a step-edge detector based on the second
+directional derivative&nbsp;[<A HREF="node50.html#haralick:digital">25</A>].  Other popular
+gradient edge detectors are the Roberts, Sobel and Prewitt
+operators&nbsp;[<A HREF="node50.html#ballard&amp;brown">5</A>]. For the purposes of this work, we have
+selected an edge detector proposed by Canny and improved upon by
+Deriche&nbsp;[<A HREF="node50.html#canny:computation">14</A>, <A HREF="node50.html#deriche:criteria">17</A>].
+<P>
+The Canny-Deriche operator initially identifies candidate edge pixels
+through a set of edge-detection criteria; the image is convolved with
+two square masks, producing estimates of the horizontal <I>h</I>
+and vertical <I>v</I>
+components of the brightness gradient at every pixel.  The intensity
+gradient at each pixel location can then be estimated by taking the
+linear combination of these directional values, providing an estimated
+magnitude <I>m</I> and direction <IMG WIDTH=8 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4220" SRC="img4.gif"> (Eqn&nbsp;<A HREF="node18.html#direct">3.1</A>).
+<P>
+<BR><A NAME="direct">&#160;</A><IMG WIDTH=500 HEIGHT=73 ALIGN=BOTTOM ALT="eqnarray207" SRC="img5.gif"><BR>
+<P>
+For all pixels, ``non-maximum suppression''
+based on the gradient magnitude is performed by exploring in the
+direction of steepest gradient.  A pixel is kept as a possible edge
+point only if it has a larger gradient than its  neighbours
+located in the direction closest to that of the gradient, and than its
+ neighbours located in the opposite direction.  The remaining
+local maxima belong to one-pixel-wide edge segments.  Thresholding
+based on gradient magnitude is then performed on these points.  Any
+point above a high threshold is kept, as well as any segment connected
+to it which consists of points above a lower threshold, reducing the
+probability of subdividing a segment whose magnitude fluctuates near
+the high threshold.  Canny proves this approach to be optimal
+solution for image
+edge-detection under certain
+conditions&nbsp;[<A HREF="node50.html#canny:computation">14</A>, <A HREF="node50.html#deriche:criteria">17</A>].
+<P>
+<HR><A NAME="tex2html350" HREF="node19.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html348" HREF="node17.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html342" HREF="node17.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html352" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html351" HREF="node19.html">Feature Interpretation</A>
+<B>Up:</B> <A NAME="tex2html349" HREF="node17.html">Learning Landmarks</A>
+<B> Previous:</B> <A NAME="tex2html343" HREF="node17.html">Learning Landmarks</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

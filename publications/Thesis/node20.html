@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Landmark Detection</TITLE>
+<META NAME="description" CONTENT="Landmark Detection">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html370" HREF="node21.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html368" HREF="node17.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html364" HREF="node19.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html372" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html371" HREF="node21.html">Visual Tracking</A>
+<B>Up:</B> <A NAME="tex2html369" HREF="node17.html">Learning Landmarks</A>
+<B> Previous:</B> <A NAME="tex2html365" HREF="node19.html">Feature Interpretation</A>
+<BR> <P>
+<H1><A NAME="SECTION00830000000000000000">Landmark Detection</A></H1>
+<P>
+Let us now formulate a definition of an image-domain landmark, which
+will be the basic feature that we employ for localisation. The
+definition will be motivated by the observations we have noted in the
+previous section. Let <IMG WIDTH=101 HEIGHT=17 ALIGN=BOTTOM ALT="tex2html_wrap_inline4226" SRC="img8.gif"> be the output of an
+image operator, such as an edge detector, applied to some image <I>I</I>.
+If we define the density <I>D</I> of the output of <I>E</I> in the neighbourhood
+<IMG WIDTH=12 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4234" SRC="img9.gif"> of <IMG WIDTH=55 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline4236" SRC="img10.gif"> as the sum of the output of <I>E</I> over
+each point in <IMG WIDTH=12 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4234" SRC="img9.gif">, normalised by the area of <IMG WIDTH=12 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline4234" SRC="img9.gif">:
+<P>
+<BR><IMG WIDTH=500 HEIGHT=44 ALIGN=BOTTOM ALT="equation238" SRC="img11.gif"><BR>
+<P>
+then a set of <b>candidate landmarks</b> <I>C</I> is defined as
+the set of sufficiently ``interesting'' local maxima of <I>D</I>:
+<P>
+<BR><A NAME="landdef">&#160;</A><IMG WIDTH=589 HEIGHT=21 ALIGN=BOTTOM ALT="equation247" SRC="img12.gif"><BR>
+<P>
+where each candidate landmark <IMG WIDTH=48 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline4248" SRC="img13.gif"> represents a
+position in the image, <IMG WIDTH=23 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4250" SRC="img14.gif"> and <IMG WIDTH=23 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4252" SRC="img15.gif"> are the average and
+standard deviation <I>D</I> takes over the entire image, and <I>t</I> is a
+user-defined threshold.  Simply stated, <I>C</I> is a set of local maxima
+of <I>D</I> that exceed a particular threshold.
+<P>
+<P><A NAME="262">&#160;</A><A NAME="robot1">&#160;</A><IMG WIDTH=728 HEIGHT=181 ALIGN=BOTTOM ALT="figure258" SRC="img16.gif"><BR>
+<STRONG>Figure 3.3:</STRONG> Detected Landmarks in an
+    Image. The right image is the original, with the Canny-Deriche
+    edge map in the centre and the density function <I>D</I> on the right,
+    where darker intensity represents large values of <I>D</I>.  In each
+    image, potential landmarks are drawn as squares.<BR>
+<P>
+<P>
+Figure <A HREF="node20.html#robot1">3.3</A> shows the results obtained from running the
+landmark detector on an image obtained in our lab. From left to right,
+the images represent the original, edge map and density
+function <I>D</I>, with the potential landmarks superimposed as squares.
+<P>
+If we are to employ the density function <I>D</I> for feature extraction,
+it is worthwhile to consider the properties and behaviour of <I>D</I> under
+small changes in camera pose.  Figure&nbsp;<A HREF="node20.html#crossda">3.4(a)</A> shows a
+cross-section of the density function obtained from the image in
+Figure&nbsp;<A HREF="node20.html#crossdb">3.4(b)</A>. The trajectory of the cross-section is marked
+by the solid line, which is also an epipole indicating the direction
+of translation.  Now consider Figure&nbsp;<A HREF="node20.html#crossdc">3.4(c)</A>, which is a
+cross-section of the image in Figure&nbsp;<A HREF="node20.html#crossdd">3.4(d)</A>, obtained after a
+sideways translation of the camera by 5.0 cm.  While both
+cross-sections are corrupted slightly by noise (caused by camera noise
+and other instabilities in the underlying edge-operator), the
+gross structure of both cross-sections is consistent.  Furthermore, it
+is reasonable to select the larger local maxima as candidates for
+tracking, since they will be consistently localised to within a small
+neighbourhood.
+<P>
+<P><A NAME="279">&#160;</A><A NAME="crossd">&#160;</A><A NAME="crossdd">&#160;</A><A NAME="crossdc">&#160;</A><A NAME="crossdb">&#160;</A><A NAME="crossda">&#160;</A><IMG WIDTH=509 HEIGHT=480 ALIGN=BOTTOM ALT="figure270" SRC="img17.gif"><BR>
+<STRONG>Figure 3.4:</STRONG> A cross-section of the density function.<BR>
+<P>
+<P>
+Figure&nbsp;<A HREF="node20.html#nineimgs">3.5</A> shows the results of an experiment conducted for
+the purposes of demonstrating the properties of the landmark detector.
+Each image is taken at 1.0cm intervals in a 3.0cm by 3.0cm
+grid.  The detected landmark candidates are superimposed as bold
+squares.  Note that some landmarks do not appear in all nine images,
+and others are perturbed slightly from their position in the centre
+image.  It is clear, however, that the landmarks consistently mark
+image regions which may be useful for localisation.  The semantic
+content of these image regions is unimportant, but how the
+<em>appearance</em> of the landmark varies under changes in pose will
+provide us with important information for localisation.  Before they
+can be employed for localisation, however, the landmark candidates
+must be tracked and some may be removed. The next chapter will deal
+with these issues.
+<P>
+<P><A NAME="294">&#160;</A><A NAME="nineimgs">&#160;</A><IMG WIDTH=644 HEIGHT=542 ALIGN=BOTTOM ALT="figure284" SRC="img18.gif"><BR>
+<STRONG>Figure 3.5:</STRONG> Output of the landmark
+  detector over a small region of pose-space.<BR>
+<P><HR><A NAME="tex2html370" HREF="node21.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html368" HREF="node17.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html364" HREF="node19.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html372" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html371" HREF="node21.html">Visual Tracking</A>
+<B>Up:</B> <A NAME="tex2html369" HREF="node17.html">Learning Landmarks</A>
+<B> Previous:</B> <A NAME="tex2html365" HREF="node19.html">Feature Interpretation</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

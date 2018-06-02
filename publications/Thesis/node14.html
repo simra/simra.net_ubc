@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Feature-Based Methods</TITLE>
+<META NAME="description" CONTENT="Feature-Based Methods">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html305" HREF="node15.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html303" HREF="node11.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html297" HREF="node13.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html307" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html306" HREF="node15.html">Sensor Inversion</A>
+<B>Up:</B> <A NAME="tex2html304" HREF="node11.html">Previous Work</A>
+<B> Previous:</B> <A NAME="tex2html298" HREF="node13.html">Kalman Filtering</A>
+<BR> <P>
+<H1><A NAME="SECTION00730000000000000000">Feature-Based Methods</A></H1>
+<P>
+Localisation methods which operate on the basis of geometric
+reasoning rely on the reliable extraction and recognition of
+<em>features</em> from sensor data. Image-based methods extract features
+based on edge formations, such as corners or straight
+lines&nbsp;[<A HREF="node50.html#Zoghlami1997">64</A>, <A HREF="node50.html#Krotkov:89">33</A>, <A HREF="node50.html#sugihara88:location">54</A>, <A HREF="node50.html#kosaka:fast">31</A>],
+or perform segmentation on the basis of intensity or
+colour&nbsp;[<A HREF="node50.html#tsubouchi:mapassisted">59</A>], while sonar-based methods attempt
+to link sonar points into lines and
+structures&nbsp;[<A HREF="node50.html#Leonard:91">36</A>, <A HREF="node50.html#mackenzie:icra">40</A>].  Feature
+extraction and correspondence is plagued by the inherent
+noise of almost all sensors, which often leads to
+instability in the extracted features.  For most feature-based
+methods, the choice of which features to employ is often sensor
+dependent and constrained to a particular application domain.  For
+example, Sugihara, Krotkov, Yagi <em>et al</em>. and Kosaka and Kak all
+present methods which depend on the reliable extraction of vertical
+lines in an image.  Vertical lines are chosen under the assumption
+that if the camera pose is constrained such that it is vertically
+aligned at all times, vertical structures in the environment will
+always appear as vertical lines in the
+image&nbsp;[<A HREF="node50.html#Krotkov:89">33</A>, <A HREF="node50.html#sugihara88:location">54</A>, <A HREF="node50.html#bb16034">62</A>, <A HREF="node50.html#bb8627">63</A>, <A HREF="node50.html#kosaka:fast">31</A>].
+These assumptions break down easily if a camera is poorly mounted, the
+terrain is rough, or there is a paucity of fixed vertical structures
+in the environment, such as in outdoor scenes.
+<P>
+Feature-based methods are concerned primarily with optimising feature
+correspondence, and are susceptible to local minima in the functional
+to be optimised, especially when employed with large-scale
+maps. Furthermore, these methods often rely on an accurate <em>a
+priori</em> map which is usually obtained from architectural drawings, or
+by manual measurement, which can fail to account for the presence of
+furnishings such as desks or chairs, or the issues of the dynamics of
+human and robot interaction with the environment.
+<P>
+A popular alternative to extracting naturally occurring features from
+sensor data is to employ <em>artificial</em> landmarks, that is,
+features which are not natural to a particular environment, but which
+are inserted, affixed, or otherwise deployed on the basis that they
+can be more robustly detected and extracted by a sensor. Artificial
+landmarks benefit from the ability to easily extract parameters based
+on <em>a priori</em> knowledge of landmark geometry, or through explicit
+labelling, such as bar codes or ultrasonic
+beacons&nbsp;[<A HREF="node50.html#lin97:mobile">37</A>, <A HREF="node50.html#brady87:progress">22</A>]. The use of artificial
+landmarks can greatly simplify the problem of position estimation but
+there are significant drawbacks in the facts that they require
+prior (and often human) intervention, and can impose other costly or
+impractical requirements on the environment.
+<P>
+<HR><A NAME="tex2html305" HREF="node15.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html303" HREF="node11.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html297" HREF="node13.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html307" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html306" HREF="node15.html">Sensor Inversion</A>
+<B>Up:</B> <A NAME="tex2html304" HREF="node11.html">Previous Work</A>
+<B> Previous:</B> <A NAME="tex2html298" HREF="node13.html">Kalman Filtering</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

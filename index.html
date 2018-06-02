@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Robert Sim's Home</title>
+    <link rel="stylesheet" href="style.css"
+type="text/css"> 
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <link rel="icon" href="http://www.cs.ubc.ca/~simra/images/s.png" type="image/png" >
+    <meta name="author" content="Robert Sim">
+<script type="text/javascript" src="showHide.js"></script>
+
+  </HEAD>
+<BODY>
+<div class="header">
+<H1>Robert Sim's Home</h1>
+<div class="lefthead">
+<a href="index.html">home</a> <a href="contact.html">contact</a> <a href="research.html">publications</a> <a href="cv.html">cv</a>
+</div>
+<div class="righthead">
+<a href="blog.html">blogs</a> <a href="koan.html">koan</a> <a href="simra_net.html">simra.net</a>
+</div>
+</div>
+<div class="core">    
+
+<div class="section">
+<!-- <div style="text-align:center"><a href="http://feeds.feedburner.com/~r/Simranet/~6/1"><img
+src="http://feeds.feedburner.com/Simranet.1.gif" alt="simra.net - Doing stuff
+since 1973" style="border:0"></a></div> -->
+    <img src="simra.png" style="float: right; margin: 10pt; width: 300px;">
+    <h2>Research</h2>
+<p>Here's a <a href="http://youtube.com/watch?v=Q1ipn42rMh8">video of my
+postdoc work @ UBC</a>.</p>
+<p> <b>Status Nov 08:</b> Back to Microsoft!  I'll be joining the Windows Live
+  Experience Team as an Applied Researcher, starting Dec 1.
+<p> <b>News as of March 07:</b>  I was a Senior Robotic
+Vision Scientist at <a
+href="http://www.braintech.com">Braintech</a>. 
+<p> <b>News as of July 31/06:</b> I moved to Microsoft's <a
+href="http://adlab.microsoft.com">adCenter Labs</a>, where I'll be the
+resident vision guy.</p>
+<p> From 2004-2006, I was a post-doc working with <a
+    href="http://www.cs.ubc.ca/~little">Jim Little</a> and <a
+    href="http://www.cs.ubc.ca/~lowe">David Lowe</a> at the <a
+    href="http://www.cs.ubc.ca/nest/lci/">Laboratory for Computational
+    Intelligence</a> at <a href="http://www.ubc.ca">UBC</a>.  The problems I'm interested in concern
+    robotic exploration and formulating useful policies for exploring
+    large spaces and building visual representations of the world.
+<p>I co-chaired the <a href="http://www.computerrobotvision.org">2nd
+Canadian Conference on Computer
+and Robot Vision</a> May 9-11, 2005 in Victoria, BC.
+</div>
+<div class="section">
+    <h2>Projects</h2>
+<ul id="toggle">
+			<li><a href="index.html#gridmap">Look, ma- no lasers! Real-time exploration
+			and mapping using vision.</a></li>
+			<li><a href="index.html#scale">Why doesn't FastSLAM scale?</a></li>
+			<li><a href="index.html#fastslam">6-DOF Vision-based
+			mapping with Rao-Blackwellised Particle Filters</a></li>
+			<li><a href="index.html#aaai">Vintage footage:
+			Vision-based robotics, ca. 1997</a></li>
+			<li><a href="index.html#bearingslam">Bearings-only SLAM</a></li>
+			<li><a href="index.html#vismaps">Visual Maps</a></li>
+			<li><a href="index.html#poseimg">Pose-calibrated images</a></li>
+			<li><a href="index.html#aqua">The AQUA project</a></li>
+		</ul>
+<div id="toggleable">
+<div class="project" id="gridmap">
+<h3>Look, ma- no lasers!  Real-time exploration	and mapping using vision.</h3>
+<a href="http://www.cs.ubc.ca/~simra/lci/media/grid_global.avi"><img src="http://www.cs.ubc.ca/~simra/lci/fastslam/gridmap.png" width=100></a>
+Click on the image at right to view an <a
+href="http://www.cs.ubc.ca/~simra/lci/fastslam/gridmap.avi">animation of vision-based occupancy
+mapping</a>. Over the last few months I've implemented an autonomous exploration
+and mapping system that uses *only* vision to explore an environment
+and construct a useful map.  The system uses our <a
+href="http://www.cs.ubc.ca/~simra/lci/fastslam">RBPF SLAM</a> implementation to keep an accurate
+map, and stereo occupancy grids for planning and obstacle avoidance.
+The key to achieving accuracy is to perform SLAM on a sparse landmark
+map, and compute the occupancy grid as a by-product of the RBPF- we
+never try to localize in the grid.  This work is described in our
+upcoming <a href="publications/sim_iros06.pdf">IROS paper</a>, which
+has been nominated for best paper. :-)
+<br style="clear:left;">&nbsp;
+</div>
+<div class="project" id="scale">
+<h3>Why doesn't FastSLAM scale </h3>
+<a href="http://www.cs.ubc.ca/~simra/lci/fastslam/nonlinear.html"><img src="http://www.cs.ubc.ca/~simra/lci/fastslam/siftcost.png" width=100></a>
+In theory, RBPF-based SLAM filters scale linearly with the number of
+samples.  In actual practice this isn't the case. Click <a
+href="http://www.cs.ubc.ca/~simra/lci/fastslam/nonlinear.html">here</a> for the reason.
+<br style="clear:left;">&nbsp;
+</div>
+
+<div class="project" id="fastslam">
+<h3>6DoF Vision-Based Mapping with Rao-Blackwellised Particle Filters </h3>
+<a href="http://www.cs.ubc.ca/~simra/lci/fastslam"><img src="http://www.cs.ubc.ca/~simra/lci/fastslam/GOOD_PART_ZOOM_4000.ppm.png" width=100></a>
+I've been involved in an ongoing project to implement vision-based
+mapping for large-scale environments (bigger than a single room).
+With the help of Matt Griffin, Pantelis Elinas, Alex Shyr, and Jim
+Little, we've implemented a system that can handle hundreds of
+thousands of visual landmarks over long
+6-DOF trajectories, without control or odometric information. Click <a
+href="http://www.cs.ubc.ca/~simra/lci/fastslam">here</a> for more details.  This work received the
+"Best Robotics Paper" award at CRV 2006.
+<br style="clear:left;">&nbsp;
+</div>
+<div class="project" id="aaai">
+<h3>From the Vaults: Vision-based robotics, ca. 1997</h3>
+<a href="http://www.cs.ubc.ca/~simra/lci/aaai97-1.mov"><img src="http://www.cs.ubc.ca/~simra/lci/aaai-1.png" width=100></a>
+<a href="http://www.cs.ubc.ca/~simra/lci/aaai97mars.mov"><img src="http://www.cs.ubc.ca/~simra/lci/aaai-2.png" width=100></a>
+Vintage quicktime footage of Invader at the AAAI 97 Mobile Robotics Competition
+in Providence, RI.  The robot used supervised colour-space training to
+detect objects and obstacles with a monocular camera at 10Hz.  We took
+home first place two years running.  (Sorry for the low image
+quality - this was high tech digital imagery at the time). The second 
+  link is more of a 'making-of', featuring yours truly as the mad scientist.
+<br style="clear:left;">&nbsp;
+</div>
+<div class="project" id="bearingslam">
+<h3>Bearings-only SLAM</h3>
+<a href="http://www.cs.ubc.ca/~simra/lci/bearingslam/"><img src="http://www.cs.ubc.ca/~simra/lci/bearingslam/tsp.png" 
+    width="100"></a> 
+I'm currently working on exploration
+    strategies for constructing accurate maps from bearings-only sensor
+    observations. Click the image at left for more details.
+<br style="clear:left;">&nbsp;
+</div>
+<div class="project" id="vismaps">
+<h3>Visual Maps</h3> 
+<a href="http://www.cs.ubc.ca/~simra/lci/vismaps/gen_model.mpg"><img src="http://www.cs.ubc.ca/~simra/lci/vismaps/feat.png" width=100></a>  My
+    graduate work focused on the problem of learning a representation
+    of the visual world from an ensemble of images.  The work focused
+    on modeling the behaviour of salient features extracted from a
+    scene, as a robot moves through the environment.  Click on the
+    image at left for a short video of a set of feature models
+    rendered along an imaginary trajectory.
+    See also my  <a href="publications/sim_phd.pdf">Ph.D. thesis</a>.
+<br style="clear:left;">&nbsp;
+</div>
+<div class="project" id="aqua">
+<h3>Aqua</h3>
+<a href="http://quintessence.cim.mcgill.ca:8080/AQUA/photos"><img
+    src="http://quintessence.cim.mcgill.ca:8080/AQUA/photos/157-5777_IMG.JPG?display=xsmall"
+    width=100></a> I'm involved with the McGill/York/Dalhousie <a href="http://www.cs.dal.ca/~aqua/">AQUA</a> underwater
+    robot project. In January, 2004 we were at the Bellairs marine research station in
+    Barbados for <a href="http://quintessence.cim.mcgill.ca:8080/AQUA">field
+    trials</a>. (Including pictures and video footage). more footage is
+    available at this <a href="http://www.cim.mcgill.ca/~arlweb/">CIM ARL</a>
+    page.  York also has some more footage <a
+    href="http://vgr.cs.yorku.ca/~vgrlab/Events/">here</a>.  <b>Update
+    (2004/03/12):</b> Today Wired ran a good <a href="http://www.wired.com/news/technology/0,1282,62612,00.html?tw=wn_tophead_4">story</a> about the project. 
+</ul>
+<br style="clear:left;">&nbsp;
+</div>
+<div class="project" id="poseimg" >
+<h3>Pose-calibrated images</h3>
+<a href="http://www.cs.ubc.ca/~simra/lci/data/"><img src="http://www.cs.ubc.ca/~simra/lci/data/LAB.png" width=100></a> Some archives of
+pose-calibrated images for localization and structure-from-motion research.
+<br style="clear:left;">&nbsp;
+</div>
+</div>
+</div>
+<div class="section">
+<h2>Teaching</h2>
+<ul>
+<li>Fall 2004: <a href="http://www.ugrad.cs.ubc.ca/~cs315/">CPSC 315: Introduction to Operating Systems</a>
+<li>Summer 2004:  <a href="http://www.ugrad.cs.ubc.ca/~cs219">CPSC 219: Software
+    Development Laboratory</a>
+</ul>
+</div>
+<div class="section">
+<a name="local">
+<h2>UBC/CS Local stuff</h2>
+<ul><li>The UBC Machine Learning <a href="http://www.haikufactory.com/mwiki/index.php/Main_Page">Wiki</a>
+<li>A remote printing @cs <a href="local/cs-lpr.html">howto</a> for laptops running linux.
+<li>An <a href="local/ifup-local.txt"><tt>ifup-local</tt></a> script for
+    automagically logging in to UBC wireless and setting a zoneedit DNS entry
+    at boot time.
+<li>Another script: <a href="local/rc.local_networking.sh" type="text/plain"><tt>rc.local_networking</tt></a> that automagically port-forwards all the UBC/CS
+services for you: mail, imap, samba and news.  It also demonstrates
+how to mount your ubc home directory on your laptop.  
+</ul>
+</div>
+<div class="section">
+<h2>Links</h2>
+<a href="blog.html">my blogs</a> |
+<a href="nisha/index.html">Nisha Nathani</a> | <a
+href="http://amicus.collectionscanada.ca/s4-bin/Main/ItemDisplay?l=0&l_ef_l=-1&id=746320.1188676&v=1&lvl=1&coll=18&rt=1&rsn=S_WWWzhaBftqQS&all=1&dt=NW+|nisha|+AND+|nathani|&spi=-&rp=1&vo=1">Nisha
+Nathani M.A. Thesis</a> | 
+<a href="friends.html">people</a> | 
+<a href="http://www.flickr.com/photos/simra">photos</a> |
+<a href="http://nethack.simra.net/">nethack</a> |
+<a href="http://robots.simra.net/">robot news</a> |
+a <a
+href="http://smart-machines.blogspot.com">robotics</a> blog
+
+<br style="clear:left;">&nbsp;
+</div>
+<div class="section">
+    <h2>More..</h2>
+    See also my old home page at McGill: <a href="http://www.cim.mcgill.ca/~simra/">http://www.cim.mcgill.ca/~simra</a>
+<br style="clear:left;">&nbsp;
+</div>
+<hr>
+
+    <address>
+      <a href="mailto:web@simra.net">Robert Sim</a>,
+      Last modified:   17 Nov 2008
+    </address>
+</div>
+</div>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Kalman Filtering</TITLE>
+<META NAME="description" CONTENT="Kalman Filtering">
+<META NAME="keywords" CONTENT="foe">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="foe.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html294" HREF="node14.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html292" HREF="node11.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html286" HREF="node12.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html296" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html295" HREF="node14.html">Feature-Based Methods</A>
+<B>Up:</B> <A NAME="tex2html293" HREF="node11.html">Previous Work</A>
+<B> Previous:</B> <A NAME="tex2html287" HREF="node12.html">Triangulation Methods</A>
+<BR> <P>
+<H1><A NAME="SECTION00720000000000000000">Kalman Filtering</A></H1>
+<P>
+Few of the methods presented thus far take into consideration the
+possibility of combining multiple observations of the environment.
+That is, the robot may wish to consider integrating data from multiple
+sensors, data acquired over time, or even previous pose estimates in
+its computation of the current pose.  The most popular technique for
+achieving this goal is Kalman filtering.  Kalman filtering has been
+used in a variety of application domains for computing estimates from
+uncertain data acquired over time.  In the context of mobile robotics,
+Self, Smith and Cheeseman derive a method for combining uncertain
+reference frames (known as <em>Approximate Transforms</em> or ATs) using
+a Kalman filter&nbsp;[<A HREF="node50.html#smith1987">52</A>, <A HREF="node50.html#smith1986">53</A>].  ATs are represented
+mathematically by a mean estimate and associated covariance matrix and
+represent transformations between reference frames such as that
+between a robot's internal representation of the environment and a
+global reference frame.
+<P>
+Leonard and Durrant-Whyte have applied the Extended Kalman Filter
+(EKF) to the problem of localisation using sonar data which is
+obtained over time&nbsp;[<A HREF="node50.html#Leonard:91">36</A>].  Like the Kalman Filter, EKF
+methods allow for the integration of multiple sources of data and
+allows prior data to be weighted according to how well it predicts the
+current observations.  Leonard <em>et al</em>. apply the EKF to sonar
+data which has been preprocessed into <em>geometric beacons</em>, which
+are employed as landmarks. As these landmarks are indistinguishable,
+the robot relies heavily on a good <em>a priori</em> estimate in order
+to obtain an accurate position estimate.
+<P>
+Extended Kalman filtering techniques have been used in a variety of robotic tasks such as
+road-following, visual map-building and egomotion estimation and other
+related navigational applications such as ship navigation and missile
+tracking&nbsp;[<A HREF="node50.html#Dickmanns:88">18</A>, <A HREF="node50.html#ayache:maintain">3</A>, <A HREF="node50.html#Kriegman:etal:89">32</A>, <A HREF="node50.html#Matthies:Shafer:87">43</A>, <A HREF="node50.html#sorenson83:automatic">24</A>].
+One significant disadvantage of both the Kalman filter and the EKF is
+that they make a <em>locally linear</em> approximation to the true
+relationship between position and observations.  That is, the Kalman
+filtering techniques tend to rely on a good <em>a priori</em> estimate.
+For this reason Kalman filtering methods can suffer from lack of
+robustness or failure to converge altogether.
+<P>
+Several researchers have proposed alternative methods for approaching
+the task of optimising the correspondence between sensor measurements
+and a known map.  Beveridge, Weiss and Riseman, and Lu and Milios
+propose solutions which seek out an optimal registration of sensor
+data in the least squares
+sense&nbsp;[<A HREF="node50.html#beveridge:optimization">9</A>, <A HREF="node50.html#cvpr94*935">39</A>].  The solution proposed
+by Beveridge and colleagues uses an iterative match-and-perturb
+technique to arrive at a locally optimal correspondence, whereas Lu
+and Milios seek out an estimate which results in globally optimal
+sensor data registration.  Similarly, Boley, Steinmetz and Sutherland
+employ a method which computes a least-squares position estimate from
+all the data that is available to it, and supports real-time
+implementation by deriving a recursive method to incorporate new
+measurements incrementally&nbsp;[<A HREF="node50.html#boley96">11</A>].  These works tend to depend
+critically on the availability of good range data and limited input
+error. In other work, Thrun derives a Bayesian probabilistic solution
+to the localisation problem which subsumes the Kalman
+filter&nbsp;[<A HREF="node50.html#Thrun1998">56</A>].  In that work, the computational
+intractability of the derived probabilities leads to a neural-network
+based implementation.
+<P>
+While most optimisation approaches seek out a least-squares optimum in
+the correspondence error, several other measures have been suggested,
+such as the generalised Hough transform, geometric
+hashing and the Hausdorff
+distance&nbsp;[<A HREF="node50.html#Carlsson1994">15</A>, <A HREF="node50.html#prassler98">49</A>, <A HREF="node50.html#lamdan-geometric-hashing-iccv-88">35</A>, <A HREF="node50.html#CORNELLCS//TR92-1321">28</A>, <A HREF="node50.html#lin97:mobile">37</A>].
+<P>
+<HR><A NAME="tex2html294" HREF="node14.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <A NAME="tex2html292" HREF="node11.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif.gif"></A> <A NAME="tex2html286" HREF="node12.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif.gif"></A> <A NAME="tex2html296" HREF="node4.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="icons/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html295" HREF="node14.html">Feature-Based Methods</A>
+<B>Up:</B> <A NAME="tex2html293" HREF="node11.html">Previous Work</A>
+<B> Previous:</B> <A NAME="tex2html287" HREF="node12.html">Triangulation Methods</A>
+<P><ADDRESS>
+<I>Robert Sim <BR>
+Tue Jul 21 10:30:54 EDT 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>
