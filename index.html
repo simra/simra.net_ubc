@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="style.css"
 type="text/css"> 
     <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-    <link rel="icon" href="http://www.cs.ubc.ca/~simra/images/s.png" type="image/png" >
+    <!-- <link rel="icon" href="images/s.png" type="image/png" > -->
     <meta name="author" content="Robert Sim">
 <script type="text/javascript" src="showHide.js"></script>
 
@@ -68,13 +68,13 @@ and Robot Vision</a> May 9-11, 2005 in Victoria, BC.
 <div id="toggleable">
 <div class="project" id="gridmap">
 <h3>Look, ma- no lasers!  Real-time exploration	and mapping using vision.</h3>
-<a href="http://www.cs.ubc.ca/~simra/lci/media/grid_global.avi"><img src="http://www.cs.ubc.ca/~simra/lci/fastslam/gridmap.png" width=100></a>
+<a href="lci/media/grid_global.avi"><img src="lci/fastslam/gridmap.png" width=100></a>
 Click on the image at right to view an <a
-href="http://www.cs.ubc.ca/~simra/lci/fastslam/gridmap.avi">animation of vision-based occupancy
+href="lci/fastslam/gridmap.avi">animation of vision-based occupancy
 mapping</a>. Over the last few months I've implemented an autonomous exploration
 and mapping system that uses *only* vision to explore an environment
 and construct a useful map.  The system uses our <a
-href="http://www.cs.ubc.ca/~simra/lci/fastslam">RBPF SLAM</a> implementation to keep an accurate
+href="lci/fastslam">RBPF SLAM</a> implementation to keep an accurate
 map, and stereo occupancy grids for planning and obstacle avoidance.
 The key to achieving accuracy is to perform SLAM on a sparse landmark
 map, and compute the occupancy grid as a by-product of the RBPF- we
@@ -85,30 +85,30 @@ has been nominated for best paper. :-)
 </div>
 <div class="project" id="scale">
 <h3>Why doesn't FastSLAM scale </h3>
-<a href="http://www.cs.ubc.ca/~simra/lci/fastslam/nonlinear.html"><img src="http://www.cs.ubc.ca/~simra/lci/fastslam/siftcost.png" width=100></a>
+<a href="lci/fastslam/nonlinear.html"><img src="lci/fastslam/siftcost.png" width=100></a>
 In theory, RBPF-based SLAM filters scale linearly with the number of
 samples.  In actual practice this isn't the case. Click <a
-href="http://www.cs.ubc.ca/~simra/lci/fastslam/nonlinear.html">here</a> for the reason.
+href="lci/fastslam/nonlinear.html">here</a> for the reason.
 <br style="clear:left;">&nbsp;
 </div>
 
 <div class="project" id="fastslam">
 <h3>6DoF Vision-Based Mapping with Rao-Blackwellised Particle Filters </h3>
-<a href="http://www.cs.ubc.ca/~simra/lci/fastslam"><img src="http://www.cs.ubc.ca/~simra/lci/fastslam/GOOD_PART_ZOOM_4000.ppm.png" width=100></a>
+<a href="lci/fastslam"><img src="lci/fastslam/GOOD_PART_ZOOM_4000.ppm.png" width=100></a>
 I've been involved in an ongoing project to implement vision-based
 mapping for large-scale environments (bigger than a single room).
 With the help of Matt Griffin, Pantelis Elinas, Alex Shyr, and Jim
 Little, we've implemented a system that can handle hundreds of
 thousands of visual landmarks over long
 6-DOF trajectories, without control or odometric information. Click <a
-href="http://www.cs.ubc.ca/~simra/lci/fastslam">here</a> for more details.  This work received the
+href="lci/fastslam">here</a> for more details.  This work received the
 "Best Robotics Paper" award at CRV 2006.
 <br style="clear:left;">&nbsp;
 </div>
 <div class="project" id="aaai">
 <h3>From the Vaults: Vision-based robotics, ca. 1997</h3>
-<a href="http://www.cs.ubc.ca/~simra/lci/aaai97-1.mov"><img src="http://www.cs.ubc.ca/~simra/lci/aaai-1.png" width=100></a>
-<a href="http://www.cs.ubc.ca/~simra/lci/aaai97mars.mov"><img src="http://www.cs.ubc.ca/~simra/lci/aaai-2.png" width=100></a>
+<a href="lci/aaai97-1.mov"><img src="lci/aaai-1.png" width=100></a>
+<a href="lci/aaai97mars.mov"><img src="lci/aaai-2.png" width=100></a>
 Vintage quicktime footage of Invader at the AAAI 97 Mobile Robotics Competition
 in Providence, RI.  The robot used supervised colour-space training to
 detect objects and obstacles with a monocular camera at 10Hz.  We took
@@ -119,7 +119,7 @@ quality - this was high tech digital imagery at the time). The second
 </div>
 <div class="project" id="bearingslam">
 <h3>Bearings-only SLAM</h3>
-<a href="http://www.cs.ubc.ca/~simra/lci/bearingslam/"><img src="http://www.cs.ubc.ca/~simra/lci/bearingslam/tsp.png" 
+<a href="lci/bearingslam/"><img src="lci/bearingslam/tsp.png" 
     width="100"></a> 
 I'm currently working on exploration
     strategies for constructing accurate maps from bearings-only sensor
@@ -128,7 +128,7 @@ I'm currently working on exploration
 </div>
 <div class="project" id="vismaps">
 <h3>Visual Maps</h3> 
-<a href="http://www.cs.ubc.ca/~simra/lci/vismaps/gen_model.mpg"><img src="http://www.cs.ubc.ca/~simra/lci/vismaps/feat.png" width=100></a>  My
+<a href="lci/vismaps/gen_model.mpg"><img src="lci/vismaps/feat.png" width=100></a>  My
     graduate work focused on the problem of learning a representation
     of the visual world from an ensemble of images.  The work focused
     on modeling the behaviour of salient features extracted from a
@@ -155,7 +155,7 @@ I'm currently working on exploration
 </div>
 <div class="project" id="poseimg" >
 <h3>Pose-calibrated images</h3>
-<a href="http://www.cs.ubc.ca/~simra/lci/data/"><img src="http://www.cs.ubc.ca/~simra/lci/data/LAB.png" width=100></a> Some archives of
+<a href="lci/data/"><img src="lci/data/LAB.png" width=100></a> Some archives of
 pose-calibrated images for localization and structure-from-motion research.
 <br style="clear:left;">&nbsp;
 </div>

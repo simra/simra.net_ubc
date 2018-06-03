@@ -4,7 +4,7 @@ function initShowHide() {
 		var toggle = document.getElementById('toggle');
 		var as = toggle.getElementsByTagName('a');
 		for (var i = 0; i < as.length; i++) {
-			as[i].onclick = function() {
+			as[i].onmouseover = function() {
 				show(this);
 				return false;
 			}
