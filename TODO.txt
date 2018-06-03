@@ -1,0 +1,7 @@
+lci/vismaps/gen_model.mpg
+lci/bearingslam/
+lci/data/
+lci/aaai97-1.mov
+lci/aaai97mars.mov
+lci/fastslam/nonlinear.html
+bearingslam videos

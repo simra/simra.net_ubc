@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Exploration strategies for bearings-only SLAM</title>
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <meta name="author" content="Robert Sim">
+  </head>
+<body>
+<div class="header">
+<h1>Exploration strategies for bearings-only SLAM</h1>
+<div class="lefthead">
+<a href="/index.html">home</a> <a href="/contact.html">contact</a> <a href="/research.html">publications</a> <a href="/cv.html">cv</a> <a href="/software.html">software</a> 
+</div>
+<div class="righthead">
+<a href="/koan.html">koan</a>
+<a href="/simra_net.html">simra.net</a>
+</div>
+</div>
+<div class="core">    
+<i><b>Note:</b> The results on this page are somewhat out of date.
+Please refer to my recent <a href="/publications/sim_icra05.pdf">ICRA paper</a> for more
+details.</i>
+<p>
+    Bearings-only simultaneous localization and mapping (SLAM) is a particularly
+    challenging problem for autonomous mobile robots.  The typical approach is
+    to apply the extended Kalman Filter (EKF) to linearize the relationship
+    between robot pose and landmark observations, send the robot off on its
+    merry way and sit back and pray that the filter doesn't diverge due to the
+    highly non-linear observation function.
+<p>
+This work approaches the problem of bearings-only SLAM by taking exploratory
+trajectories that optimize the stability of the measurement update while
+maximizing coverage of the unexplored space.  These movies demonstrate that the
+robot can successfully map an unknown environment using an appropriate
+trajectory, even in the presence of significant observation noise (up to 10
+degrees standard-deviation, normally distributed noise).
+    <p>
+The exploratory trajectories are as follows:
+<ul><li> Straight:  The robot takes a straight-line path to successive
+landmarks.  A very bad strategy.
+<li> Random: The robot follows a random trajectory.  The map converges, but the
+robot fails to explore unknown space.
+<li> Spiral: The robot follows a spiral-like path to each successive landmark,
+attempting to encircle it and thereby localizing it with high accuracy.  When
+every landmark has been visited, the robot returns to the start and refines the
+map by continuing to visit each landmark successively.  
+</ul>
+<p>
+In all of these runs, the robot has a field of view of 500m.  The width of the
+environment is 2000m.  The ground-truth landmarks and robot pose are in blue,
+the estimated landmarks are in red and the robot's estimated trajectory is
+yellow.  Ignore the wide sweeping red arcs, which correspond to uncertainties
+associated with undiscovered landmarks (these are distributed at random
+throughout the environment to drive exploration). Check back here in the
+future for images that have better contrast.
+<h3>Low observation noise (normally distributed 1 degree std-deviation)</h3>
+Click each image for an mpeg of the exploration.
+<table border="0">
+<tr><td><a href="straight.mpg"></a></td>
+<td><a href="random.mpg"></a></td>
+<td><a href="tsp.mpg"><img src="tsp.png" width="95%"></a></td>
+</tr>
+<tr><td><center>Straight</center></td>
+<td><center>Random</center></td>
+<td><center>Spiral</center></td>
+</table>
+<h3>High observation noise (norm. dist 10 degree std-deviation)</h3>
+<table border="0">
+<tr><td><a href="reallynoisy/straight.mpg"></a></td>
+<td><a href="reallynoisy/random.mpg"></a></td>
+<td><a href="reallynoisy/tsp.mpg"></a></td>
+</tr>
+<tr><td><center>Straight</center></td>
+<td><center>Random</center></td>
+<td><center>Spiral</center></td>
+</table>
+<p>
+One more movie, with 5 degree std-dev error and 40 landmarks.
+<p><a href="long.mpg"></a>
+<p>
+<h3>Discussion</h3>
+The jaggedness of the trajectories, particularly in the high-noise case
+ reflects the highly unstable localization estimate.  Despite this fact, in the
+ spiral case, the robot is able to successfully navigate to each landmark in
+ the environment.  It should be noted that mapping accuracy can only be
+ measured relative to a global translation and rotation of the estimated map--
+ hence the reason why the spiral map in the noisy case is 'correct' but offset
+ from the true landmark positions. Notice that the 'Straight' strategy diverges
+ almost immediately.
+<p>
+Note that not only does the spiral-based approach successfully converge, but it
+also successfully closes the loop, a notoriously difficult problem in SLAM.
+<p>
+This results have important implications for a variety of exploratory
+applications, and in particular vision-based SLAM, where range cannot be
+directly observed.  Clearly, in real-world applications there are a slew of
+other issues: imperfect data association, the presence of obstacles, etc.
+However, these results demonstrate that it is valuable (and important) for an
+exploring robot to collect observations in a principled manner.
+    <hr>
+    <address>
+      <a href="mailto:web@simra.net">Robert Sim</a>,
+      Last modified:   14 May 2005
+    </address>
+</div>
+</html>
