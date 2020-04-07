@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <title>COVID-19 Plots for $date$</title>
+        <style type='text/css'>
+            h1 {font-family:sans-serif}
+            body {margin-left:100px;margin-right:100px;}
+            
+
+            img {
+                vertical-align: middle;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <script language='javascript'>
+
+
+
+            window.onload = function(e) {
+            ww = ['1_countryshift.png',
+            '2_countryshift_norm.png',
+            '3_growth.png',
+            '5_barplots.png',
+            '7_world.png' ,
+            '10_countvsgrowth.png' ,
+            '14_countryshift_norm-deaths.png', 
+            '14_growthvsactive.png' ,
+            '15_deathsvsconfirmed.png' 
+            ];
+            us = [
+            '9_usstates.png', 
+            '6_euus.png',
+            '11_usstatesgrowth.png',
+            '16_usbarplots.png',
+            '13_icubeds.png',
+            '17_tests.png'
+            
+            ];
+            can = [
+            '8_canada.png',
+            '12_canadagrowth.png',
+            '16_canada_normalized.png'    
+            ];
+            currentId=0;
+
+
+            function createImageFromHTML(imagePath) {
+                var div = document.createElement('div');
+                div.innerHTML = '<a href="'+imagePath+'"><img src="'+imagePath+'" style="width:30%" /></a>';  
+                currentId+=1;
+                // Change this to div.childNodes to support multiple top-level nodes                
+                return div.firstChild; 
+            }
+
+            ww.forEach(element => {
+                console.log(element);
+              document.getElementById('ww').appendChild(createImageFromHTML(element));
+            });
+            us.forEach(element => {
+                console.log(element);
+              document.getElementById('us').appendChild(createImageFromHTML(element));
+            });
+            can.forEach(element => {
+                console.log(element);
+              document.getElementById('can').appendChild(createImageFromHTML(element));
+            });
+            
+            };
+            
+        </script>
+        <a name="top"></a>
+        Jump to: <a href="#usa">US</a> <a href="#canada">Canada</a> <a href="#about">About</a>
+        <h1> World-wide</h1>
+        <div id='ww'>
+            <!-- <a href='1_countryshift.png'><img src='1_countryshift.png' width='30%' /> </a> -->
+            
+        </div>
+        
+        <a name="usa"></a>
+        <h1>US</h1>
+        <a href="#top">back to top</a>
+        <div id='us'>
+            
+        </div>
+        <a name="canada"><h1>Canada</h1></a>
+        <a href="#top">back to top</a>
+        <div id='can'>                        
+        </div>
+        <a name = "about"><h1>About this page</h1></a>
+        
+        Data sources: <a href="https://systems.jhu.edu/research/public-health/ncov/">Johns Hopkins</a> and <a href="https://covidtracking.com">The COVID Tracking Project.</a> 
+        <br>
+        Code: <a href="https://github.com/simra/COVID-19">https://github.com/simra/COVID-19</a>
+
+    </body>
+</html>
