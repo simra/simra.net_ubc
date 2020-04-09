@@ -8,6 +8,7 @@
 
             img {
                 vertical-align: middle;
+                max-width: 100vw;
             }
 
             #menudiv {
@@ -27,7 +28,7 @@
                 background-color: yellow;
             }
             .noZoom  { display:none; }
-            .zoom {
+            .zoomWide {
                 display:block; 
                 position: fixed;
                 top: 0%;
@@ -42,12 +43,22 @@
                 /*margin-left:auto;*/
                 /*margin-right: auto;  */
             }
-            @media (max-aspect-ratio: 1/1 ) {
-                .zoom {
-                    width:100%;
-                    height:auto;
-                }
-            }
+            
+            .zoomNarrow {
+                display:block; 
+                position: fixed;
+                top: 0%;
+                left: 0%;
+                height:100%;
+                width:100%;
+                max-width: 100vw;
+                box-shadow: 0.5em 0.5em 0.7em #333;
+                border-radius: 1em;                
+                padding-left: 0px;
+                padding-right: 0px;
+                background-color: #99999999;
+                z-index: 5;
+            }            
 
         </style>
 
@@ -71,7 +82,15 @@
             function zoom(path) {
                 e = document.getElementById('zoomDiv');
                 clearNodes(e);
-                e.className='zoom';
+                var vw = window.innerWidth; //Math.max(document.documentElement.clientWidth,  0);
+                var vh = window.innerHeight; //Math.max(document.documentElement.clientHeight, 0);
+                console.log(vw+' '+vh);
+                //e.className='zoomNarrow';
+                if (vw<vh) {
+                    e.className='zoomNarrow';
+                } else {
+                    e.className='zoomWide';
+                }
                 console.log(path)
                 e.onclick = function() {
                     e.className='noZoom';                    
